@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>制冷剂产业链长图：原料、工艺、中间品、设备与应用</title>
+  <style>
+    :root {
+      --bg: #f5f1e8;
+      --ink: #18201f;
+      --muted: #5e6863;
+      --line: #d4c8b6;
+      --panel: #fffaf0;
+      --green: #0d6b57;
+      --green-2: #d9eee6;
+      --blue: #0f5f8f;
+      --blue-2: #dcecf6;
+      --amber: #9b5c00;
+      --amber-2: #f6e3bd;
+      --red: #a6412f;
+      --red-2: #f3d7cf;
+      --violet: #5a4a91;
+      --violet-2: #e3def4;
+      --gray-2: #e7e2d8;
+      --shadow: 0 18px 50px rgba(36, 29, 18, 0.12);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 8%, rgba(13, 107, 87, 0.12), transparent 28%),
+        radial-gradient(circle at 87% 4%, rgba(155, 92, 0, 0.14), transparent 25%),
+        linear-gradient(180deg, #f7f2e8 0%, #efe7d7 100%);
+      font-family: "Noto Serif SC", "Source Han Serif SC", "Microsoft YaHei", serif;
+      line-height: 1.55;
+    }
+
+    .page {
+      width: min(1480px, calc(100vw - 36px));
+      margin: 0 auto;
+      padding: 42px 0 80px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 48px;
+      border: 1px solid rgba(24, 32, 31, 0.12);
+      border-radius: 34px;
+      background:
+        linear-gradient(135deg, rgba(255, 250, 240, 0.94), rgba(244, 235, 218, 0.88)),
+        repeating-linear-gradient(45deg, rgba(13, 107, 87, 0.05) 0 8px, transparent 8px 16px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -110px;
+      top: -120px;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: conic-gradient(from 110deg, rgba(13, 107, 87, 0.18), rgba(15, 95, 143, 0.2), rgba(155, 92, 0, 0.16), rgba(13, 107, 87, 0.18));
+      filter: blur(1px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--green-2);
+      color: var(--green);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 13px;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 22px 0 16px;
+      max-width: 980px;
+      font-size: clamp(34px, 5vw, 76px);
+      line-height: 1.03;
+      letter-spacing: -0.045em;
+    }
+
+    .lead {
+      position: relative;
+      z-index: 1;
+      max-width: 1120px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .warning {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-left: 5px solid var(--amber);
+      border-radius: 18px;
+      background: rgba(246, 227, 189, 0.58);
+      color: #60410f;
+      font-size: 15px;
+    }
+
+    .hero-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .hero-actions a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      color: white;
+      background: var(--green);
+      text-decoration: none;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(13, 107, 87, 0.18);
+    }
+
+    .hero-actions a.secondary {
+      color: var(--green);
+      background: var(--green-2);
+      box-shadow: none;
+    }
+
+    .section {
+      margin-top: 30px;
+      padding: 30px;
+      border: 1px solid rgba(24, 32, 31, 0.12);
+      border-radius: 30px;
+      background: rgba(255, 250, 240, 0.82);
+      box-shadow: var(--shadow);
+    }
+
+    .section h2 {
+      margin: 0 0 14px;
+      font-size: 30px;
+      letter-spacing: -0.03em;
+    }
+
+    .section-intro {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .legend span {
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(24, 32, 31, 0.1);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .lg-up { background: var(--green-2); color: var(--green); }
+    .lg-mid { background: var(--blue-2); color: var(--blue); }
+    .lg-hfc { background: var(--amber-2); color: var(--amber); }
+    .lg-hfo { background: var(--violet-2); color: var(--violet); }
+    .lg-risk { background: var(--red-2); color: var(--red); }
+
+    .big-map {
+      display: grid;
+      grid-template-columns: 1.05fr 1.1fr 1.6fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .lane {
+      min-height: 100%;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.46);
+    }
+
+    .lane h3 {
+      margin: 0 0 16px;
+      font-size: 20px;
+    }
+
+    .node {
+      position: relative;
+      margin: 0 0 13px;
+      padding: 14px 15px;
+      border-radius: 18px;
+      border: 1px solid rgba(24, 32, 31, 0.12);
+      background: var(--panel);
+    }
+
+    .node strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 16px;
+    }
+
+    .node small {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .arrow {
+      text-align: center;
+      color: var(--muted);
+      font-weight: 700;
+      margin: -3px 0 8px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 5px 5px 0 0;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--gray-2);
+      color: #4c514e;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .product-card {
+      overflow: hidden;
+      border: 1px solid rgba(24, 32, 31, 0.12);
+      border-radius: var(--radius);
+      background: rgba(255, 250, 240, 0.94);
+    }
+
+    .product-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 18px;
+      color: white;
+      background: linear-gradient(135deg, var(--green), #143b36);
+    }
+
+    .product-head.hfc { background: linear-gradient(135deg, var(--amber), #44320f); }
+    .product-head.hfo { background: linear-gradient(135deg, var(--violet), #2e274f); }
+    .product-head.natural { background: linear-gradient(135deg, var(--blue), #15364f); }
+    .product-head.blend { background: linear-gradient(135deg, #60644a, #2d332a); }
+
+    .product-head h3 {
+      margin: 0;
+      font-size: 21px;
+    }
+
+    .product-head em {
+      align-self: flex-start;
+      min-width: fit-content;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.2);
+      font-style: normal;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .product-body {
+      padding: 16px 18px 18px;
+    }
+
+    .flow-line {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px dashed rgba(24, 32, 31, 0.16);
+    }
+
+    .flow-line:last-child { border-bottom: none; }
+
+    .flow-line b {
+      color: #323a36;
+      font-size: 14px;
+    }
+
+    .flow-line span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .matrix {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--panel);
+    }
+
+    .matrix th,
+    .matrix td {
+      padding: 14px 15px;
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    .matrix th {
+      color: white;
+      background: #233630;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+    }
+
+    .matrix tr:last-child td { border-bottom: none; }
+    .matrix td:last-child,
+    .matrix th:last-child { border-right: none; }
+
+    .deep-dive {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .note-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(24, 32, 31, 0.12);
+      background: rgba(255, 255, 255, 0.52);
+    }
+
+    .note-card h3 {
+      margin: 0 0 10px;
+      font-size: 19px;
+    }
+
+    .note-card p,
+    .note-card li {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 8px 0 0;
+    }
+
+    .sources {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .sources a {
+      color: var(--blue);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 95, 143, 0.3);
+    }
+
+    @media (max-width: 1100px) {
+      .legend,
+      .big-map,
+      .product-grid,
+      .deep-dive {
+        grid-template-columns: 1fr;
+      }
+
+      .hero { padding: 30px; }
+      .section { padding: 22px; }
+      .flow-line { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      @page {
+        size: A3 landscape;
+        margin: 10mm;
+      }
+
+      body { background: white; }
+      .page { width: 100%; padding: 0; }
+      .section, .hero { break-inside: avoid; box-shadow: none; }
+      a { color: inherit; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">REFRIGERANT VALUE CHAIN MAP · 产业研究版</div>
+      <h1>制冷剂产业链长图：从萤石、氯碱到HFC/HFO/天然工质</h1>
+      <p class="lead">
+        这张图把制冷剂产业拆成四层：上游资源与基础化工、中间体与核心反应、单质/混配/低GWP产品、终端应用。重点不是给出可复制的化工操作参数，而是帮助判断价格传导、配额稀缺、技术替代和A股公司受益方向。
+      </p>
+      <div class="hero-actions">
+        <a href="assets/refrigerant_industry_chain_map.pdf">下载PDF版</a>
+        <a class="secondary" href="#product-routes">查看产品路线卡</a>
+      </div>
+      <div class="warning">
+        安全边界：氢氟酸、氯气、氯代烃、HFO/HFC合成均属于高危化工过程。本图仅做产业链和单元操作层级梳理，不包含可直接用于生产的温度、压力、催化剂配方、投料比或控制参数。
+      </div>
+    </section>
+
+    <section class="section" id="product-routes">
+      <h2>一眼看懂：产业链的三条主线</h2>
+      <p class="section-intro">制冷剂看起来品种很多，但源头其实高度集中：一条是“萤石 → AHF → 含氟有机物”，一条是“氯碱/石化 → 氯代烃中间体”，第三条是“天然工质/液冷介质”。</p>
+      <div class="legend">
+        <span class="lg-up">上游资源：萤石、硫酸、盐、天然气/乙烯/乙炔</span>
+        <span class="lg-mid">中间体：AHF、氯仿、二氯甲烷、TCE/PCE、VDC</span>
+        <span class="lg-hfc">三代HFC：R32、R125、R134a、R143a、R152a</span>
+        <span class="lg-hfo">四代HFO/HCFO：R1234yf、R1234ze、R1233zd</span>
+        <span class="lg-risk">约束变量：配额、GWP、原料、装置安全、客户认证</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>长图主干：从原料到应用</h2>
+      <p class="section-intro">这部分把各类产品放在同一张流程图里。读图方式：先看最左侧资源，再看中间体，最后看产品和下游应用。</p>
+      <div class="big-map">
+        <div class="lane">
+          <h3>① 资源与基础化工</h3>
+          <div class="node"><strong>萤石 CaF2</strong><small>酸级萤石粉是含氟制冷剂的核心资源；价格影响AHF和HFC/HFO成本。</small><span class="pill">矿山</span><span class="pill">浮选</span><span class="pill">烘干</span></div>
+          <div class="node"><strong>硫酸 H2SO4</strong><small>与萤石反应生成氟化氢；副产石膏/含氟尾气需处理。</small><span class="pill">硫磺/冶炼酸</span><span class="pill">储罐</span></div>
+          <div class="node"><strong>盐/氯碱</strong><small>盐水电解提供氯气、烧碱、氢气，是氯代烃和氟化工副产HCl消纳的基础。</small><span class="pill">离子膜电解槽</span><span class="pill">氯气压缩</span></div>
+          <div class="node"><strong>天然气/甲醇/乙烯/乙炔</strong><small>提供C1、C2、C3碳骨架，进入甲烷氯化物、氯代乙烯、丙烯氯化中间体。</small><span class="pill">石化</span><span class="pill">煤化工</span></div>
+        </div>
+
+        <div class="lane">
+          <h3>② 关键中间体</h3>
+          <div class="node"><strong>无水氟化氢 AHF</strong><small>萤石 + 硫酸，经反应、冷凝、精馏、吸收/尾气处理得到；是绝大多数含氟制冷剂的“氟源”。</small><span class="pill">预反应器</span><span class="pill">回转窑</span><span class="pill">精馏塔</span><span class="pill">洗涤塔</span></div>
+          <div class="arrow">↓ 与氯代烃发生卤素交换/氟化</div>
+          <div class="node"><strong>甲烷氯化物</strong><small>二氯甲烷、氯仿等；分别进入R32、R22等路线。</small><span class="pill">氯化反应器</span><span class="pill">分离塔</span></div>
+          <div class="node"><strong>氯代乙烯/乙烷</strong><small>TCE、PCE、VDC、1,1,1-三氯乙烷等；进入R125、R134a、R143a、R152a、PVDF相关路线。</small><span class="pill">氯化</span><span class="pill">氧氯化</span><span class="pill">裂解/分离</span></div>
+          <div class="node"><strong>C3氯代中间体</strong><small>HCC-240、四氯丙烯、HCFO-1233xf、HFC-245fa等；进入HFO-1234yf/ze、HCFO-1233zd。</small><span class="pill">氯化</span><span class="pill">异构化</span><span class="pill">脱卤化氢</span></div>
+        </div>
+
+        <div class="lane">
+          <h3>③ 单质与混配制冷剂</h3>
+          <div class="node"><strong>二代 HCFC</strong><small>R22等：曾是空调/冷冻主力，也用于PTFE等含氟材料中间体；受ODS配额持续约束。</small><span class="pill">R22</span><span class="pill">HCFC-142b</span><span class="pill">HCFC-141b</span></div>
+          <div class="node"><strong>三代 HFC</strong><small>R32、R125、R134a、R143a、R152a：不破坏臭氧层，但GWP较高，2024年起中国正式实施HFC配额管理。</small><span class="pill">配额品</span><span class="pill">价格弹性</span></div>
+          <div class="node"><strong>混配制冷剂</strong><small>R410A、R407C、R404A、R507A等由单质HFC按标准比例混配；新一代R454B/R513A等引入HFO降低GWP。</small><span class="pill">混配釜</span><span class="pill">在线称重</span><span class="pill">GC检测</span></div>
+          <div class="node"><strong>四代 HFO/HCFO</strong><small>R1234yf、R1234ze、R1233zd：低GWP，汽车空调、冷水机、发泡剂/溶剂等替代方向明确，壁垒在技术、成本和客户认证。</small><span class="pill">低GWP</span><span class="pill">专利/工艺</span></div>
+          <div class="node"><strong>天然工质</strong><small>R290、R600a、R717、R744：低GWP，但存在可燃性、毒性或高压系统设计要求。</small><span class="pill">丙烷</span><span class="pill">异丁烷</span><span class="pill">氨</span><span class="pill">CO2</span></div>
+          <div class="node"><strong>数据中心液冷介质</strong><small>水/乙二醇、丙二醇、去离子水、合成烃/硅油/氟化液等；不完全等同于传统制冷剂。</small><span class="pill">CDU</span><span class="pill">冷板</span><span class="pill">浸没液</span></div>
+        </div>
+
+        <div class="lane">
+          <h3>④ 终端应用</h3>
+          <div class="node"><strong>家用/商用空调</strong><small>R32、R410A存量、低GWP混配、R290探索。</small></div>
+          <div class="node"><strong>汽车空调</strong><small>R134a存量，R1234yf新增替代。</small></div>
+          <div class="node"><strong>冷链/商超/工业制冷</strong><small>R404A/R507A存量，CO2、NH3、R448A/R449A替代。</small></div>
+          <div class="node"><strong>冷水机/热泵</strong><small>R134a、R513A、R1234ze、R1233zd、R32、R290。</small></div>
+          <div class="node"><strong>算力/数据中心</strong><small>冷站用制冷剂 + 机柜侧液冷介质；高密度AI机柜更偏液冷而非直膨HFC。</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>产品路线卡：原料 → 中间品 → 产成品 → 设备</h2>
+      <p class="section-intro">以下路线是产业研究层级的“主流路径/典型路径”，不同企业会因专利、装置、循环副产物处理不同而存在差异。</p>
+      <div class="product-grid">
+        <article class="product-card">
+          <div class="product-head"><h3>AHF 无水氟化氢</h3><em>氟源</em></div>
+          <div class="product-body">
+            <div class="flow-line"><b>原材料</b><span>酸级萤石粉、硫酸，辅以水、电、燃料/蒸汽。</span></div>
+            <div class="flow-line"><b>核心流程</b><span>萤石预处理 → 与硫酸反应 → HF气体冷凝/净化 → 精馏/吸收 → AHF储运。</span></div>
+            <div class="flow-line"><b>副产/处理</b><span>硫酸钙、含氟硅化物、酸性尾气；需要洗涤、中和和固废处理。</span></div>
+            <div class="flow-line"><b>关键设备</b><span>萤石干燥系统、预反应器、回转窑、冷凝器、精馏塔、吸收塔、尾气洗涤塔、耐HF储罐。</span></div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-head"><h3>R22 / HCFC-22</h3><em>二代</em></div>
+          <div class="product-body">
+            <div class="flow-line"><b>原材料</b><span>氯仿、AHF；上游对应甲烷氯化物和萤石-AHF。</span></div>
+            <div class="flow-line"><b>典型路径</b><span>氯仿氟化 → 粗R22/HCl/轻重组分 → 酸气分离 → 精馏提纯 → 充装。</span></div>
+            <div class="flow-line"><b>中间/副产</b><span>可能产生含氟副产物，包括需严格控制的HFC-23副产物。</span></div>
+            <div class="flow-line"><b>关键设备</b><span>氟化反应器、HCl吸收系统、压缩冷凝、精馏塔组、尾气焚烧/分解或回收系统。</span></div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-head hfc"><h3>R32 / HFC-32</h3><em>家空主力</em></div>
+          <div class="product-body">
+            <div class="flow-line"><b>原材料</b><span>二氯甲烷、AHF；成本看氯碱、甲烷氯化物、萤石/AHF。</span></div>
+            <div class="flow-line"><b>典型路径</b><span>二氯甲烷氟化 → 粗R32 → 除酸/干燥 → 精馏 → 高纯R32。</span></div>
+            <div class="flow-line"><b>产品去向</b><span>单质R32用于家用空调、热泵；也用于R410A、R454B等混配。</span></div>
+            <div class="flow-line"><b>关键设备</b><span>氟化反应器、HCl吸收塔、分子筛干燥器、精馏塔、低温储罐、气相色谱质检。</span></div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-head hfc"><h3>R125 / HFC-125</h3><em>混配核心</em></div>
+          <div class="product-body">
+            <div class="flow-line"><b>原材料</b><span>PCE/TCE等氯代乙烯中间体、AHF。</span></div>
+            <div class="flow-line"><b>典型路径</b><span>氯代乙烯多步氟化 → HCFC/HFC中间体 → R125粗品 → 精馏提纯。</span></div>
+            <div class="flow-line"><b>产品去向</b><span>R410A、R404A、R507A、R407C等混配制冷剂的重要组分。</span></div>
+            <div class="flow-line"><b>关键设备</b><span>多级氟化反应器、循环压缩、酸气吸收、精馏塔、重组分处理、混配系统。</span></div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-head hfc"><h3>R134a / HFC-134a</h3><em>汽车/冷水机存量</em></div>
+          <div class="product-body">
+            <div class="flow-line"><b>原材料</b><span>TCE等C2氯代烃、AHF。</span></div>
+            <div class="flow-line"><b>典型路径</b><span>TCE氟化 → HCFC-133a等中间体 → 进一步氟化/转化 → R134a → 精馏。</span></div>
+            <div class="flow-line"><b>产品去向</b><span>汽车空调存量维修、冷水机、气雾剂、部分混配制冷剂。</span></div>
+            <div class="flow-line"><b>关键设备</b><span>氟化反应器、相分离/除酸、精馏塔组、干燥器、成品罐、钢瓶/槽车充装线。</span></div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-head hfc"><h3>R143a / HFC-143a</h3><em>低温混配</em></div>
+          <div class="product-body">
+            <div class="flow-line"><b>原材料</b><span>VDC或相关氯代乙烷/乙烯中间体、AHF。</span></div>
+            <div class="flow-line"><b>典型路径</b><span>VDC氟化 → HCFC-142b等中间体/伴生组分 → R143a → 分离提纯。</span></div>
+            <div class="flow-line"><b>产品去向</b><span>R404A、R507A等中低温制冷剂组分。</span></div>
+            <div class="flow-line"><b>关键设备</b><span>连续氟化反应器、冷凝分离、酸气吸收、精馏系统、防爆储运与充装。</span></div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-head hfc"><h3>R152a / HFC-152a</h3><em>低GWP HFC</em></div>
+          <div class="product-body">
+            <div class="flow-line"><b>原材料</b><span>乙炔或氯乙烯/VDC路径、AHF。</span></div>
+            <div class="flow-line"><b>典型路径</b><span>乙炔加氟或氯代乙烯氟化 → 粗R152a → 除酸/干燥 → 精馏。</span></div>
+            <div class="flow-line"><b>产品去向</b><span>气雾剂、发泡剂、混配制冷剂；因可燃性，制冷端应用需系统适配。</span></div>
+            <div class="flow-line"><b>关键设备</b><span>反应器、冷凝器、分离塔、防爆仪表、压缩机、低温储罐。</span></div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-head blend"><h3>R410A / R407C / R404A / R507A</h3><em>HFC混配</em></div>
+          <div class="product-body">
+            <div class="flow-line"><b>原材料</b><span>R32、R125、R134a、R143a等单质HFC。</span></div>
+            <div class="flow-line"><b>混配逻辑</b><span>R410A=R32/R125；R407C=R32/R125/R134a；R404A=R125/R143a/R134a；R507A=R125/R143a。</span></div>
+            <div class="flow-line"><b>流程</b><span>单质检测 → 干燥 → 按配比计量 → 混合均质 → 复检 → 充装。</span></div>
+            <div class="flow-line"><b>关键设备</b><span>电子秤/质量流量计、混配釜、循环泵、分子筛干燥器、GC检测、钢瓶/ISO tank充装。</span></div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-head hfo"><h3>HFO-1234yf</h3><em>汽车空调替代</em></div>
+          <div class="product-body">
+            <div class="flow-line"><b>原材料</b><span>C3氯代中间体、AHF；部分路线可涉及HCC-240、四氯丙烯、HCFO-1233xf等中间体。</span></div>
+            <div class="flow-line"><b>典型路径</b><span>C3氯代中间体 → 氟化/异构化 → HCFO-1233xf等 → 进一步转化/脱卤化氢 → HFO-1234yf。</span></div>
+            <div class="flow-line"><b>产品去向</b><span>汽车空调低GWP替代核心产品，也用于低GWP混配。</span></div>
+            <div class="flow-line"><b>关键设备</b><span>多级反应器、异构化单元、酸气处理、精馏提纯、微量杂质控制、客户认证检测。</span></div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-head hfo"><h3>HFO-1234ze / HCFO-1233zd</h3><em>冷水机/发泡剂</em></div>
+          <div class="product-body">
+            <div class="flow-line"><b>原材料</b><span>HCC-240系列、HFC-245fa、HCFC-244fa等C3含氯/含氟中间体。</span></div>
+            <div class="flow-line"><b>典型路径</b><span>C3中间体氟化/脱卤化氢/异构化 → 1234ze或1233zd → 精馏分离异构体。</span></div>
+            <div class="flow-line"><b>产品去向</b><span>离心冷水机、热泵、发泡剂、溶剂；1233zd常见于低压冷水机和发泡替代。</span></div>
+            <div class="flow-line"><b>关键设备</b><span>氟化反应器、异构体分离塔、尾气吸收、中间体回收、低水分包装系统。</span></div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-head blend"><h3>R513A / R454B / R448A / R449A</h3><em>低GWP混配</em></div>
+          <div class="product-body">
+            <div class="flow-line"><b>原材料</b><span>HFC单质 + HFO单质，如R134a、R32、R125、R1234yf、R1234ze等。</span></div>
+            <div class="flow-line"><b>路线</b><span>不新增化学反应，核心在单质供应、混配精度、杂质/水分控制和应用认证。</span></div>
+            <div class="flow-line"><b>产品去向</b><span>替代R134a、R410A、R404A/R507A等高GWP产品。</span></div>
+            <div class="flow-line"><b>关键设备</b><span>混配釜、低温液体输送、称重计量、在线分析、气瓶阀门兼容性检测。</span></div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-head natural"><h3>R290 / R600a</h3><em>烃类天然工质</em></div>
+          <div class="product-body">
+            <div class="flow-line"><b>原材料</b><span>丙烷、异丁烷，来自炼厂气、天然气分离或石化副产。</span></div>
+            <div class="flow-line"><b>流程</b><span>烃源分离 → 深度脱硫/脱水/除杂 → 精馏提纯 → 制冷剂级包装。</span></div>
+            <div class="flow-line"><b>产品去向</b><span>冰箱、冷柜、热泵、小型空调探索；优势是低GWP，约束是A3可燃。</span></div>
+            <div class="flow-line"><b>关键设备</b><span>精馏塔、吸附脱硫/干燥、低温储罐、防爆泵阀、泄漏检测和充装系统。</span></div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-head natural"><h3>R717 / R744</h3><em>氨 / 二氧化碳</em></div>
+          <div class="product-body">
+            <div class="flow-line"><b>原材料</b><span>R717来自合成氨体系；R744来自工业CO2净化提纯。</span></div>
+            <div class="flow-line"><b>流程</b><span>合成/回收气源 → 脱水除杂 → 压缩液化 → 制冷剂级储运。</span></div>
+            <div class="flow-line"><b>产品去向</b><span>工业制冷、冷库、食品加工、商超跨临界CO2系统、热泵。</span></div>
+            <div class="flow-line"><b>关键设备</b><span>压缩机、冷凝器、净化塔、储罐；CO2系统还需要高压管阀和专用压缩机。</span></div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-head natural"><h3>数据中心液冷介质</h3><em>算力温控</em></div>
+          <div class="product-body">
+            <div class="flow-line"><b>介质类型</b><span>水/乙二醇、丙二醇、去离子水、合成烃、硅油/酯类、氟化液等。</span></div>
+            <div class="flow-line"><b>系统路径</b><span>冷站制冷剂侧 → 冷冻水/一次侧 → CDU换热 → 二次侧冷板/浸没槽 → 服务器芯片。</span></div>
+            <div class="flow-line"><b>与制冷剂关系</b><span>高密度AI机柜的“服务器侧”用冷却液；园区冷站仍可能使用R134a、HFO、低GWP混配或自然冷却。</span></div>
+            <div class="flow-line"><b>关键设备</b><span>冷水机组、冷却塔、板式换热器、CDU、泵、快接头、冷板、浸没槽、过滤/监测系统。</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>工艺设备全景表</h2>
+      <p class="section-intro">制冷剂企业的壁垒不只在“会反应”，还在于腐蚀控制、连续化、分离提纯、尾气处置、成品一致性和客户认证。</p>
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>环节</th>
+            <th>典型物料</th>
+            <th>关键设备</th>
+            <th>核心难点</th>
+            <th>投资观察点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>萤石采选</td>
+            <td>萤石矿、酸级萤石粉</td>
+            <td>破碎、磨矿、浮选、压滤、烘干</td>
+            <td>品位、杂质、矿权、环保</td>
+            <td>有矿企业具备成本韧性</td>
+          </tr>
+          <tr>
+            <td>AHF</td>
+            <td>萤石、硫酸、HF</td>
+            <td>回转窑、精馏塔、吸收塔、耐腐储罐</td>
+            <td>强腐蚀、高毒、尾气/固废处理</td>
+            <td>AHF自供率决定制冷剂成本底盘</td>
+          </tr>
+          <tr>
+            <td>氯碱/氯代烃</td>
+            <td>Cl2、HCl、氯仿、二氯甲烷、TCE、PCE、VDC</td>
+            <td>电解槽、氯化反应器、压缩机、分离塔</td>
+            <td>氯气安全、氯化副产物、HCl平衡</td>
+            <td>氯代中间体自配套越强，利润越稳</td>
+          </tr>
+          <tr>
+            <td>HFC合成</td>
+            <td>R32、R125、R134a、R143a、R152a</td>
+            <td>氟化反应器、HCl吸收、精馏塔、干燥器</td>
+            <td>配额、选择性、副产控制、分离能耗</td>
+            <td>配额规模是第一利润因子</td>
+          </tr>
+          <tr>
+            <td>HFO/HCFO合成</td>
+            <td>R1234yf、R1234ze、R1233zd</td>
+            <td>多级反应器、异构化单元、精馏塔、杂质分析</td>
+            <td>路线专利、客户认证、成本、异构体分离</td>
+            <td>汽车/冷水机客户导入比名义产能更重要</td>
+          </tr>
+          <tr>
+            <td>混配与充装</td>
+            <td>R410A、R407C、R404A、R507A、R454B、R513A</td>
+            <td>混配釜、质量流量计、钢瓶线、GC检测</td>
+            <td>配比稳定、水分/酸度、批次一致性</td>
+            <td>渠道和品牌影响售价</td>
+          </tr>
+          <tr>
+            <td>天然工质</td>
+            <td>R290、R600a、R717、R744</td>
+            <td>精馏、净化、压缩液化、防爆/高压设备</td>
+            <td>可燃、毒性或高压系统适配</td>
+            <td>低GWP趋势确定，但应用场景分化</td>
+          </tr>
+          <tr>
+            <td>算力液冷</td>
+            <td>水/乙二醇、丙二醇、介电液、氟化液</td>
+            <td>冷水机、CDU、冷板、泵阀、快接头、过滤监测</td>
+            <td>可靠性、材料兼容、漏液风险、运维标准</td>
+            <td>它更利好液冷设备/材料，不完全等于HFC制冷剂需求</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>产业判断：哪些环节最值得跟踪</h2>
+      <div class="deep-dive">
+        <div class="note-card">
+          <h3>1. 传统HFC看“配额 + 价差”</h3>
+          <p>R32、R125、R134a、R143a已经从产能周期转向配额周期。量受限时，利润弹性来自制冷剂价格与萤石/AHF/氯代烃成本之间的价差。</p>
+          <ul>
+            <li>核心：配额规模、产品结构、出口/内销比例。</li>
+            <li>风险：需求淡季、替代品加速、政策削减节奏。</li>
+          </ul>
+        </div>
+        <div class="note-card">
+          <h3>2. HFO看“技术 + 客户认证”</h3>
+          <p>HFO不是简单扩产就能卖高价。汽车空调、冷水机等客户认证周期长，对杂质、稳定性、可靠性要求高，技术路线和专利壁垒比HFC更强。</p>
+          <ul>
+            <li>核心：R1234yf、R1234ze、R1233zd。</li>
+            <li>风险：专利、成本、国外龙头价格策略。</li>
+          </ul>
+        </div>
+        <div class="note-card">
+          <h3>3. 算力制冷要分清“冷媒”和“冷却液”</h3>
+          <p>数据中心冷站仍可能带动冷水机制冷剂，但AI机柜侧快速增长的是液冷介质、CDU、冷板、泵阀、快接头，不是R32/R125这类传统家空冷媒。</p>
+          <ul>
+            <li>核心：液冷渗透率、单机柜功率、PUE要求。</li>
+            <li>风险：技术路线在冷板、浸没、风液混合之间切换。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>A股映射的快速索引</h2>
+      <p class="section-intro">这里只做产业链位置提示，不构成买卖建议。</p>
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>环节</th>
+            <th>代表公司</th>
+            <th>看点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>HFC配额龙头</td>
+            <td>巨化股份、三美股份、昊华科技、永和股份、东阳光等</td>
+            <td>配额规模、R32/R125/R134a结构、原料一体化。</td>
+          </tr>
+          <tr>
+            <td>萤石/AHF一体化</td>
+            <td>金石资源、永和股份、巨化股份等</td>
+            <td>萤石价格上行时，资源端和AHF自配套更强。</td>
+          </tr>
+          <tr>
+            <td>HFO/低GWP替代</td>
+            <td>巨化股份、昊华科技、华谊集团/三爱富、永和股份、三美股份、联创股份等</td>
+            <td>关注R1234yf、R1234ze、R1233zd的实际投产、认证和出货。</td>
+          </tr>
+          <tr>
+            <td>数据中心液冷</td>
+            <td>英维克、申菱环境、高澜股份、同飞股份、飞荣达等</td>
+            <td>更偏设备与系统集成，不是传统制冷剂配额逻辑。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section sources">
+      <h2>参考资料</h2>
+      <p>
+        生态环境部：<a href="https://www.mee.gov.cn/xxgk2018/xxgk/xxgk05/202510/t20251024_1130755.html">2026年度ODS与HFCs配额方案通知</a>、<a href="https://www.mee.gov.cn/xxgk2018/xxgk/xxgk05/202510/W020251024653086234356.pdf">2026年度HFCs配额总量设定与分配方案</a>；
+        USGS：<a href="https://www.usgs.gov/centers/national-minerals-information-center/fluorspar-statistics-and-information">Fluorspar Statistics and Information</a>；
+        EPA：<a href="https://archive.epa.gov/emergencies/docs/chem/web/pdf/hydro.pdf">Hydrogen Fluoride Study Report</a>；
+        ASHRAE：<a href="https://www.ashrae.org/technical-resources/standards-and-guidelines/ashrae-refrigerant-designations">Refrigerant Designations</a>；
+        EPA：<a href="https://www.epa.gov/mvac/acceptable-refrigerants-and-their-impacts">Acceptable Refrigerants and their Impacts</a>；
+        专利与技术资料：<a href="https://patents.google.com/patent/EP2780307B1/en">HFO-1234yf相关路线专利</a>、<a href="https://www.mdpi.com/2076-3417/12/1/1">R134a生产与碳排研究</a>、<a href="https://www.ecetoc.org/wp-content/uploads/2021/10/JACC-045.pdf">HFC-152a资料</a>。
+      </p>
+      <p>最后更新：2026-04-28。图中流程为产业链研究简化口径；企业实际路线会因技术来源、装置历史、回收循环、副产处理和客户要求而不同。</p>
+    </section>
+  </main>
+</body>
+</html>
