@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>钼产业链全景图 | 从开采到精炼</title>
+  <meta name="description" content="梳理钼产业链从开采、选矿、焙烧到精炼与下游应用的头部玩家、价值池、CAGR、设备与主要风险。">
+  <style>
+    :root {
+      --bg: #f5f2eb;
+      --surface: #fffcf6;
+      --surface-strong: #ffffff;
+      --ink: #1b1d1f;
+      --muted: #5d6468;
+      --line: rgba(27, 29, 31, 0.12);
+      --accent: #9c5f2d;
+      --accent-soft: rgba(156, 95, 45, 0.12);
+      --teal: #1e5a61;
+      --teal-soft: rgba(30, 90, 97, 0.1);
+      --olive: #556147;
+      --olive-soft: rgba(85, 97, 71, 0.12);
+      --red-soft: rgba(155, 63, 54, 0.12);
+      --shadow: 0 18px 48px rgba(27, 29, 31, 0.08);
+      --max-width: 1360px;
+      --radius: 6px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top right, rgba(156, 95, 45, 0.12), transparent 28%),
+        radial-gradient(circle at left 30%, rgba(30, 90, 97, 0.1), transparent 34%),
+        linear-gradient(180deg, #f2ede4 0%, var(--bg) 28%, #f7f4ee 100%);
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page-shell {
+      width: min(100%, var(--max-width));
+      margin: 0 auto;
+      padding: 24px 20px 72px;
+    }
+
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0 20px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 26px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background:
+        linear-gradient(145deg, rgba(156, 95, 45, 0.95), rgba(91, 111, 113, 0.95));
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+      flex: 0 0 auto;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 4px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: "IBM Plex Serif", "Source Han Serif SC", "Songti SC", serif;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    h1 {
+      font-size: clamp(34px, 4vw, 58px);
+      max-width: 12ch;
+    }
+
+    h2 {
+      font-size: clamp(26px, 2vw, 34px);
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .nav-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .nav-pills a {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.6);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.9fr);
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 26px;
+    }
+
+    .hero-copy {
+      padding: 8px 0 0;
+    }
+
+    .hero-copy p {
+      margin: 18px 0 0;
+      max-width: 64ch;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+      color: var(--ink);
+      min-height: 42px;
+    }
+
+    .hero-panel {
+      padding: 22px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 243, 234, 0.94));
+      border: 1px solid rgba(27, 29, 31, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .hero-panel ul {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-panel li {
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .metric {
+      min-height: 168px;
+      padding: 18px 18px 16px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(27, 29, 31, 0.08);
+      box-shadow: 0 10px 26px rgba(27, 29, 31, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .metric .label {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .metric .value {
+      margin-top: 14px;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1;
+      font-family: "IBM Plex Serif", "Source Han Serif SC", serif;
+    }
+
+    .metric .sub {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .section {
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-intro {
+      max-width: 80ch;
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-size: 15px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .panel {
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(27, 29, 31, 0.08);
+    }
+
+    .panel + .panel {
+      margin-top: 16px;
+    }
+
+    .supply-bars,
+    .share-list,
+    .source-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .bar-row,
+    .share-row {
+      display: grid;
+      gap: 8px;
+    }
+
+    .bar-head,
+    .share-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .bar-track,
+    .share-track {
+      height: 12px;
+      background: rgba(27, 29, 31, 0.08);
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--teal), #7ea5a3);
+    }
+
+    .share-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #d4a272);
+    }
+
+    .caption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .players-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .player-card {
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(27, 29, 31, 0.08);
+      min-height: 172px;
+    }
+
+    .player-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .player-meta {
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .player-card p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .chain {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .chain-step {
+      padding: 18px 16px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(27, 29, 31, 0.08);
+      position: relative;
+      min-height: 210px;
+    }
+
+    .chain-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -10px;
+      width: 20px;
+      height: 1px;
+      background: rgba(27, 29, 31, 0.25);
+    }
+
+    .step-index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .chain-step p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .mini-list {
+      margin-top: 10px;
+      display: grid;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid rgba(27, 29, 31, 0.08);
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 980px;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 14px 16px;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    thead th {
+      font-size: 13px;
+      color: var(--muted);
+      background: rgba(27, 29, 31, 0.03);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .risk-chip {
+      display: inline-block;
+      padding: 4px 8px;
+      margin: 0 8px 8px 0;
+      font-size: 12px;
+      background: var(--red-soft);
+      color: #8a4238;
+    }
+
+    .note-block {
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: var(--teal-soft);
+      border-left: 3px solid var(--teal);
+      font-size: 14px;
+      color: #274447;
+    }
+
+    .assumption-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .assumption {
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(27, 29, 31, 0.08);
+    }
+
+    .assumption p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .source-item {
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(27, 29, 31, 0.08);
+      font-size: 14px;
+    }
+
+    .source-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    footer {
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 1180px) {
+      .hero,
+      .two-col,
+      .players-grid,
+      .assumption-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics,
+      .chain {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .chain-step:not(:last-child)::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page-shell {
+        padding: 18px 14px 56px;
+      }
+
+      .metrics,
+      .chain {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        padding-top: 4px;
+      }
+
+      .hero-panel,
+      .panel,
+      .metric,
+      .player-card,
+      .chain-step,
+      .assumption,
+      .source-item {
+        padding: 16px;
+      }
+
+      .nav-pills {
+        width: 100%;
+      }
+
+      .nav-pills a {
+        flex: 1 1 auto;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="brand-copy">
+          <p class="eyebrow">Molybdenum Industry Chain Map</p>
+          <strong>钼产业链全景图</strong>
+        </div>
+      </div>
+      <nav class="nav-pills" aria-label="页面导航">
+        <a href="#overview">总览</a>
+        <a href="#supply">供给格局</a>
+        <a href="#process">工序与设备</a>
+        <a href="#stages">环节拆解</a>
+        <a href="#downstream">下游占比</a>
+        <a href="#sources">来源</a>
+      </nav>
+    </div>
+
+    <section id="overview" class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">As of May 6, 2026</p>
+        <h1>从矿山到钼铁、钼化工与高纯钼金属</h1>
+        <p>
+          这份页面把钼产业链拆成五层：矿山与钼精矿、焙烧氧化钼、钢铁链路中的钼铁、化工精炼链路、以及高纯钼粉/钼金属。
+          口径上把“价值池估算”与“市场研究的 CAGR”分开处理：前者按 2025 年产量与公开价格近似推算，后者采用公开市场研究和行业协会披露的最接近代理口径。
+        </p>
+        <div class="tag-row">
+          <div class="tag">全球矿山产量：<strong>26 万吨 Mo</strong></div>
+          <div class="tag">前五国产量占比：<strong>约 90%</strong></div>
+          <div class="tag">钢铁相关用途：<strong>约 71%</strong></div>
+          <div class="tag">化工与高纯金属链：<strong>约 20%</strong></div>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <h3>读图要点</h3>
+        <p>这条链条的核心特征不是“从零到一的新材料故事”，而是“高度依赖铜副产、加工端壁垒高、终端需求稳健偏钢铁化”的工业金属逻辑。</p>
+        <ul>
+          <li><strong>上游集中：</strong>中国、智利、美国、秘鲁、墨西哥合计占全球约 90% 产量。</li>
+          <li><strong>副产属性强：</strong>全球约三分之二钼来自铜矿副产，意味着供给节奏受铜价和铜矿排产牵引。</li>
+          <li><strong>中游壁垒在环保和气体处理：</strong>焙烧段的 SO<sub>2</sub>、铼回收、除尘与废气治理是关键门槛。</li>
+          <li><strong>下游最稳的是钢：</strong>结构钢、不锈钢、工具钢、铸铁和镍基高温合金构成主要消费面。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="metrics" aria-label="关键指标">
+      <article class="metric">
+        <div>
+          <div class="label">2025 全球矿山钼产量</div>
+          <div class="value">260 kt</div>
+        </div>
+        <div class="sub">USGS 2026：2025 年全球钼矿山产量约 26 万吨 Mo。</div>
+      </article>
+      <article class="metric">
+        <div>
+          <div class="label">2025 氧化钼均价</div>
+          <div class="value">$51/kg</div>
+        </div>
+        <div class="sub">USGS 口径为 57% Mo 氧化钼平均价；对应矿山价值池约 132.6 亿美元。</div>
+      </article>
+      <article class="metric">
+        <div>
+          <div class="label">焙烧后进入钢链的比例</div>
+          <div class="value">~80%</div>
+        </div>
+        <div class="sub">TDi/IMOA：焙烧后物料约 80% 直接进入钢铁链或转为钼铁。</div>
+      </article>
+      <article class="metric">
+        <div>
+          <div class="label">高纯化工/金属深加工</div>
+          <div class="value">~20%</div>
+        </div>
+        <div class="sub">其余约 20% 进入 ADM、钼酸盐、催化剂级产品与钼粉/钼金属路径。</div>
+      </article>
+    </section>
+
+    <section id="supply" class="section">
+      <h2>全球供给格局</h2>
+      <p class="section-intro">
+        全球钼供给的关键在于“国家集中度高 + 公司集中度不低 + 副产占比高”。在公司层面，Freeport-McMoRan、Southern Copper、Codelco、Antofagasta、CMOC 和金堆城构成最值得跟踪的核心名单；在加工层面，Molymet 是最重要的全球独立处理商。
+      </p>
+
+      <div class="two-col">
+        <div class="panel">
+          <h3>2025 年全球矿山产量按国家</h3>
+          <div class="supply-bars" id="countryBars"></div>
+          <p class="caption">数据来源：USGS Mineral Commodity Summaries 2026。单位为吨 Mo，当年产量为估算值。</p>
+        </div>
+
+        <div>
+          <div class="panel">
+            <h3>头部矿山/矿业公司</h3>
+            <div class="players-grid" id="miningPlayers"></div>
+          </div>
+          <div class="note-block">
+            全球约三分之二钼产量来自铜矿副产。副产逻辑意味着：即便钼价高，新增供给也不一定快速释放；铜矿品位、采剥节奏、选厂回收率和铜项目扩产，常常比单纯的钼价更关键。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="section">
+      <h2>从开采到精炼的工序链</h2>
+      <p class="section-intro">
+        工艺主线一般是：开采与破碎 → 磨矿浮选得到未焙烧钼精矿（UMC） → 焙烧为焙烧钼精矿/技术级氧化钼（RMC/TGMO） → 分流为钢铁链路中的钼铁，或化工精炼链路中的钼酸盐、钼粉与钼金属。
+      </p>
+
+      <div class="chain">
+        <article class="chain-step">
+          <div class="step-index">01</div>
+          <h3>采矿</h3>
+          <p>露天矿为主，少量地下矿。副产铜矿中钼品位常在 0.01%–0.08%，主产钼矿可更高。</p>
+          <div class="mini-list">
+            <div>输出：原矿</div>
+            <div>关键控制：剥采比、品位、用水、尾矿库</div>
+          </div>
+        </article>
+        <article class="chain-step">
+          <div class="step-index">02</div>
+          <h3>选矿</h3>
+          <p>通过破碎、磨矿、浮选、浓密和过滤得到高品位未焙烧钼精矿，主成分为 MoS<sub>2</sub>。</p>
+          <div class="mini-list">
+            <div>输出：UMC，通常 85%–92% MoS<sub>2</sub></div>
+            <div>关键控制：回收率、药剂体系、杂质与含水率</div>
+          </div>
+        </article>
+        <article class="chain-step">
+          <div class="step-index">03</div>
+          <h3>焙烧</h3>
+          <p>绝大部分 UMC 进入焙烧，脱硫后得到技术级氧化钼，同时进行除尘、SO<sub>2</sub> 治理和铼回收。</p>
+          <div class="mini-list">
+            <div>输出：RMC / TGMO</div>
+            <div>关键控制：尾气治理、能耗、铼回收、纯度</div>
+          </div>
+        </article>
+        <article class="chain-step">
+          <div class="step-index">04</div>
+          <h3>钢铁链路</h3>
+          <p>RMC 可直接用于钢厂，也可进一步通过电炉/热法制成钼铁，作为钢厂更标准化的合金添加剂。</p>
+          <div class="mini-list">
+            <div>输出：FeMo / 直接入钢氧化钼</div>
+            <div>关键控制：Mo 含量、杂质、合金回收率</div>
+          </div>
+        </article>
+        <article class="chain-step">
+          <div class="step-index">05</div>
+          <h3>化工与高纯金属</h3>
+          <p>化工链把氧化钼转成 ADM、钼酸盐、催化剂级产品，再进一步制备钼粉、钼条、钼板和高纯钼金属。</p>
+          <div class="mini-list">
+            <div>输出：ADM、钼酸钠、Mo 粉、Mo 金属</div>
+            <div>关键控制：纯度、粒度、客户认证、氢还原</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="note-block">
+        IMOA/TDi 给出的关键分流是：超过 95% 的 UMC 会进入焙烧；焙烧后大约 80% 进入钢铁链相关用途，约 20% 进入更深度的化工与高纯钼金属路线。
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>各工序需要的核心设备</h2>
+      <p class="section-intro">
+        如果把产业链拆成一条“设备带”，真正有技术门槛的设备集中在磨浮段、焙烧尾气治理段、以及深加工里的结晶/还原/粉末冶金段。
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>工序</th>
+              <th>输出物</th>
+              <th>核心设备</th>
+              <th>为什么重要</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>开采</td>
+              <td>原矿</td>
+              <td>牙轮钻机、凿岩台车、铲装设备、矿卡、推土机、地下矿通风机、排水泵</td>
+              <td>决定剥采比、采矿效率和单位矿石成本，地下矿还额外受通风与安全约束。</td>
+            </tr>
+            <tr>
+              <td>粗碎/中碎/筛分</td>
+              <td>入磨矿石</td>
+              <td>颚式破碎机、旋回破碎机、圆锥破、振动筛、皮带输送机、给料机</td>
+              <td>关系到后段磨矿能耗和粒度稳定性，是选厂能耗与产能的起点。</td>
+            </tr>
+            <tr>
+              <td>磨矿分级</td>
+              <td>浮选给矿</td>
+              <td>SAG 磨、球磨机、棒磨机、水力旋流器、渣浆泵、在线粒度仪</td>
+              <td>钼矿回收率高度依赖解离度；磨得过粗回收率差，过细又会拖累浮选与过滤。</td>
+            </tr>
+            <tr>
+              <td>浮选与再磨</td>
+              <td>钼精矿浆</td>
+              <td>搅拌槽、药剂加注系统、机械浮选机、浮选柱、再磨机、在线品位分析仪</td>
+              <td>副产钼往往先从铜精矿中再分离，药剂窗口、硫化物表面状态和精矿杂质控制都很关键。</td>
+            </tr>
+            <tr>
+              <td>浓密/过滤/干燥</td>
+              <td>UMC</td>
+              <td>浓密机、陶瓷过滤机、压滤机、回转干燥机、包装系统</td>
+              <td>影响精矿水分、物流成本与焙烧进料稳定性。</td>
+            </tr>
+            <tr>
+              <td>焙烧</td>
+              <td>RMC / TGMO</td>
+              <td>多膛炉、流化床焙烧炉、给料系统、焙烧窑、冷却系统</td>
+              <td>把 MoS<sub>2</sub> 转成氧化钼，是产业链中污染控制和工艺稳定最敏感的步骤。</td>
+            </tr>
+            <tr>
+              <td>尾气治理与铼回收</td>
+              <td>净化烟气、铼中间品</td>
+              <td>布袋除尘器、电除尘器、洗涤塔、SCR/脱硫系统、酸厂、铼吸收/解析系统</td>
+              <td>SO<sub>2</sub>、粉尘和铼回收决定环保门槛与副产品收益，常常是中游最硬的牌照壁垒。</td>
+            </tr>
+            <tr>
+              <td>钼铁冶炼</td>
+              <td>FeMo</td>
+              <td>混料机、压团机、热法还原装置、电弧炉、出铁包、浇铸与破碎筛分线</td>
+              <td>钢厂更偏好规格稳定、杂质更可控的钼铁；回收率、能耗和杂质控制影响盈利。</td>
+            </tr>
+            <tr>
+              <td>化工精炼</td>
+              <td>ADM / 钼酸盐</td>
+              <td>浸出槽、反应釜、过滤机、离子交换/萃取单元、蒸发结晶器、离心机、干燥器</td>
+              <td>纯度和溶解度控制决定催化剂、电子材料和化工客户能否导入。</td>
+            </tr>
+            <tr>
+              <td>氢还原与粉末冶金</td>
+              <td>钼粉 / 钼金属</td>
+              <td>管式还原炉、推板炉、氢气系统、筛分分级机、压机、烧结炉、轧制设备</td>
+              <td>粒度分布、氧含量和致密度决定高温件、靶材与难熔金属应用的附加值。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="stages" class="section">
+      <h2>按环节拆解：头部玩家、价值池、CAGR、风险</h2>
+      <p class="section-intro">
+        这里的“产值/价值池”按 2025 年产量与公开价格近似推算，适合作为产业链大小和利润承载能力的比较框架；它们是不同统计口径下的产品价值池，不应简单相加。
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>环节</th>
+              <th>2025 价值池估算</th>
+              <th>CAGR 参考</th>
+              <th>头部玩家</th>
+              <th>主要风险</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>矿山与钼精矿（UMC）</strong><br>全球矿山产量约 260 kt Mo</td>
+              <td><strong>约 132.6 亿美元</strong><br>按 USGS 2025 氧化钼均价 $51/kg Mo 近似。</td>
+              <td><strong>3%–4%</strong><br>低于成品市场 CAGR，受副产铜矿供给刚性约束更强。</td>
+              <td>Freeport-McMoRan、Southern Copper、Codelco、Antofagasta、CMOC、Jinduicheng</td>
+              <td>
+                <span class="risk-chip">铜副产依赖</span>
+                <span class="risk-chip">矿石品位下降</span>
+                <span class="risk-chip">水资源与尾矿库</span>
+                <span class="risk-chip">许可与社区关系</span>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>焙烧氧化钼（RMC / TGMO）</strong><br>超过 95% UMC 进入焙烧</td>
+              <td><strong>约 126.0 亿美元</strong><br>按 95% 转化率和 $51/kg Mo 近似。</td>
+              <td><strong>3.5%–4.5%</strong><br>基本跟随整体钼市场，但环保约束决定有效产能释放节奏。</td>
+              <td>Molymet、Climax Molybdenum/FCX、Jinduicheng、CMOC、Codelco Molyb、SeAH M&amp;S</td>
+              <td>
+                <span class="risk-chip">SO2 排放约束</span>
+                <span class="risk-chip">铼回收稳定性</span>
+                <span class="risk-chip">能耗与天然气/电价</span>
+                <span class="risk-chip">中国出口管制</span>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>钼铁（FeMo）</strong><br>按约 40% 焙烧料转钼铁估算</td>
+              <td><strong>约 54.5 亿美元</strong><br>以 60% Mo 钼铁、2025 年中国均价折算。</td>
+              <td><strong>4.0%–4.5%</strong><br>Mordor：钼产品形态中钼铁份额最高，受钢铁链驱动最强。</td>
+              <td>Molymet、Jinduicheng、Climax Molybdenum、SeAH M&amp;S、Treibacher</td>
+              <td>
+                <span class="risk-chip">特钢景气波动</span>
+                <span class="risk-chip">合金附加费传导</span>
+                <span class="risk-chip">冶炼电耗</span>
+                <span class="risk-chip">钢厂配方切换</span>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>化工精炼（ADM / 钼酸盐 / 催化剂级）</strong><br>按约 20% 深加工链估算</td>
+              <td><strong>约 29.6 亿美元</strong><br>按钼酸盐/AHM 近似折算，代表更高附加值部分。</td>
+              <td><strong>约 4.7%</strong><br>Mordor：化工应用 CAGR 约 4.71% 至 2031。</td>
+              <td>Molymet、Climax Molybdenum、Jinduicheng、CMOC、Codelco Molyb</td>
+              <td>
+                <span class="risk-chip">下游认证周期长</span>
+                <span class="risk-chip">杂质/溶解度控制</span>
+                <span class="risk-chip">催化剂行业周期</span>
+                <span class="risk-chip">环保与废液处理</span>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>钼粉与高纯钼金属</strong><br>约占化工链体量的三分之一</td>
+              <td><strong>约 10.2 亿美元</strong><br>为化工深加工子集，按钼粉均价近似。</td>
+              <td><strong>约 4.8%</strong><br>Mordor：钼金属粉 CAGR 约 4.78% 至 2031。</td>
+              <td>Molymet、Jinduicheng、Climax Molybdenum，以及欧美难熔金属深加工厂商</td>
+              <td>
+                <span class="risk-chip">高纯度良率</span>
+                <span class="risk-chip">氢气与能耗成本</span>
+                <span class="risk-chip">客户准入门槛</span>
+                <span class="risk-chip">高端需求波动</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="assumption-grid">
+        <article class="assumption">
+          <h3>价值池方法</h3>
+          <p>矿山与焙烧环节以 USGS 2025 氧化钼均价 $51/kg Mo 作为统一金属价值锚；钼铁、钼酸盐和钼粉用 2025 年中国市场均价作近似换算，汇率按 1 美元≈7.25 元人民币，钼铁按 60% Mo 规格估算。</p>
+        </article>
+        <article class="assumption">
+          <h3>CAGR 方法</h3>
+          <p>优先用产品/应用层面的公开市场研究代理 CAGR；矿山与焙烧因缺少统一独立口径，采用相对保守的区间估算。</p>
+        </article>
+        <article class="assumption">
+          <h3>不加总原则</h3>
+          <p>上表不是一张“总和等于整体市场”的收入表，而是一张“各层价值池大小”的对比图；深加工价值包含上游原料金属价值。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>加工端的关键玩家</h2>
+      <p class="section-intro">
+        钼和很多基础金属不太一样的地方在于，中游并不只是“简单贸易和分装”。焙烧、尾气治理、铼回收、钼铁合金化以及高纯化工深加工，本身就是实打实的技术与资质壁垒。
+      </p>
+      <div class="players-grid" id="processingPlayers"></div>
+    </section>
+
+    <section id="downstream" class="section">
+      <h2>下游市场占比</h2>
+      <p class="section-intro">
+        从最终用途看，钼仍然高度集中在钢铁体系内，但结构钢、不锈钢和工具钢之间的内部构成并不一样；结构钢对应油气、化工、桥梁、风电和高压设备，不锈钢更多承接耐蚀与高温场景，工具钢与镍基高温合金则更偏高端制造。
+      </p>
+
+      <div class="two-col">
+        <div class="panel">
+          <h3>2024 终端用途占比（IMOA）</h3>
+          <div class="share-list" id="downstreamShares"></div>
+          <p class="caption">IMOA Annual Review 2024/2025：结构钢 34%，不锈钢 22%，化工 13%，工具/高速钢 9%，铸铁 7%，钼金属 6%，镍基合金 5%，润滑剂 1%，其他 3%。</p>
+        </div>
+
+        <div>
+          <div class="panel">
+            <h3>几条最重要的投资结论</h3>
+            <div class="mini-list" style="font-size:14px;">
+              <div><strong>钢铁是绝对主场。</strong> Mordor 口径中，钢铁应用占 2025 年钼市场约 71.08%。</div>
+              <div><strong>化工是更高弹性的第二增长曲线。</strong> 催化剂、润滑剂和精细化工更看纯度与认证，价格传导通常好于大宗钢链。</div>
+              <div><strong>高温合金和高纯钼体量不大，但单位附加值更高。</strong> 适合看材料升级，而不是单纯吨位弹性。</div>
+              <div><strong>再生回收不是边角料。</strong> USGS 提示，回收钼可能相当于表观供应的 30%，对价格上行形成缓冲。</div>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>风险矩阵：最值得盯的变量</h3>
+            <div class="mini-list" style="font-size:14px;">
+              <div><strong>供给端：</strong>铜矿副产节奏、矿石品位、尾矿和水资源。</div>
+              <div><strong>加工端：</strong>环保升级、焙烧气体治理、能耗成本、出口管制。</div>
+              <div><strong>需求端：</strong>特钢周期、油气与化工 CAPEX、风电和高压设备投资。</div>
+              <div><strong>价格端：</strong>价格高波动会强化钢厂去库和替代动作，但中长期替代空间仍有限。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>结论摘要</h2>
+      <p class="section-intro">
+        如果只抓三件事：第一，钼不是一个完全独立的上游品种，它深受铜矿副产逻辑牵引；第二，中游焙烧和深加工的真正壁垒在环保、尾气治理和稳定化学纯度；第三，下游仍以钢铁为主，但化工和高纯材料链条贡献了更高的利润密度与更平滑的客户粘性。
+      </p>
+      <div class="note-block">
+        对二级市场或产业投资最实用的跟踪框架通常是：<strong>铜矿扩产和副产回收率</strong>、<strong>焙烧与钼铁加工端环保产能</strong>、<strong>钢铁与化工资本开支</strong>、以及<strong>中国出口政策与国际替代供应进度</strong>。
+      </div>
+    </section>
+
+    <section id="sources" class="section">
+      <h2>来源与口径</h2>
+      <p class="section-intro">
+        下面优先列官方、公司和行业协会来源；CAGR 补充了市场研究机构的公开口径。页面中的所有价值池估算都在这些来源基础上进行了二次换算，并在文中明确为估算值。
+      </p>
+      <div class="source-list">
+        <div class="source-item">
+          <strong>USGS Mineral Commodity Summaries 2026: Molybdenum</strong>
+          全球/美国 2025 产量、均价、国家供给格局、出口管制变化。<br>
+          <a href="https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf" target="_blank" rel="noopener noreferrer">https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf</a>
+        </div>
+        <div class="source-item">
+          <strong>Freeport-McMoRan 2025 Full-Year Results</strong>
+          2025 年钼产量 92 million pounds，覆盖美国主产矿与副产铜矿。<br>
+          <a href="https://s22.q4cdn.com/529358580/files/doc_news/2026/FCX_260122.pdf" target="_blank" rel="noopener noreferrer">https://s22.q4cdn.com/529358580/files/doc_news/2026/FCX_260122.pdf</a>
+        </div>
+        <div class="source-item">
+          <strong>Southern Copper 2025 Results</strong>
+          2025 年钼产量 31,153 吨。<br>
+          <a href="https://southerncoppercorp.com/eng/wp-content/uploads/sites/2/2026/01/pr260127.pdf" target="_blank" rel="noopener noreferrer">https://southerncoppercorp.com/eng/wp-content/uploads/sites/2/2026/01/pr260127.pdf</a>
+        </div>
+        <div class="source-item">
+          <strong>Antofagasta FY2025 Results Presentation</strong>
+          2025 年钼产量 15,800 吨。<br>
+          <a href="https://www.antofagasta.co.uk/media/4895/20260217_anto-fy25-results-presentation-feb26-vf-3.pdf" target="_blank" rel="noopener noreferrer">https://www.antofagasta.co.uk/media/4895/20260217_anto-fy25-results-presentation-feb26-vf-3.pdf</a>
+        </div>
+        <div class="source-item">
+          <strong>CMOC 2025 Annual Results News Release</strong>
+          2025 年钼产量 13,906 吨。<br>
+          <a href="https://www.cmoc.com/html/2026/News_0327/398.html" target="_blank" rel="noopener noreferrer">https://www.cmoc.com/html/2026/News_0327/398.html</a>
+        </div>
+        <div class="source-item">
+          <strong>IMOA Annual Review 2024/2025</strong>
+          终端用途占比、行业景气与需求结构。<br>
+          <a href="https://www.imoa.info/download_files/annualreview/IMOA_AnnualReview_2024_2025.pdf" target="_blank" rel="noopener noreferrer">https://www.imoa.info/download_files/annualreview/IMOA_AnnualReview_2024_2025.pdf</a>
+        </div>
+        <div class="source-item">
+          <strong>IMOA / TDi Sustainability Molybdenum Profile 2025</strong>
+          产业链结构、主产国、头部处理商、焙烧/化工链路、风险框架。<br>
+          <a href="https://www.tdi-sustainability.com/content/uploads/2025/12/IMoA-Molybdenum-Profile-_2025-update_compressed.pdf" target="_blank" rel="noopener noreferrer">https://www.tdi-sustainability.com/content/uploads/2025/12/IMoA-Molybdenum-Profile-_2025-update_compressed.pdf</a>
+        </div>
+        <div class="source-item">
+          <strong>IMOA: Molybdenum Mining</strong>
+          采矿、浮选、焙烧与主要产品形态说明。<br>
+          <a href="https://www.imoa.info/molybdenum/molybdenum-mining.php" target="_blank" rel="noopener noreferrer">https://www.imoa.info/molybdenum/molybdenum-mining.php</a>
+        </div>
+        <div class="source-item">
+          <strong>Molymet</strong>
+          官方口径显示其供应全球约 35% 钼需求，是最重要的独立处理商。<br>
+          <a href="https://www.molymet.com/en/" target="_blank" rel="noopener noreferrer">https://www.molymet.com/en/</a>
+        </div>
+        <div class="source-item">
+          <strong>Jinduicheng / 金堆城钼业</strong>
+          官方公开信息用于补充其全球份额和焙烧/钼铁/高溶氧化钼能力。<br>
+          <a href="https://www.jdcmoly.com/" target="_blank" rel="noopener noreferrer">https://www.jdcmoly.com/</a>
+        </div>
+        <div class="source-item">
+          <strong>Mordor Intelligence: Molybdenum Market</strong>
+          用于 FeMo 份额、钢铁应用占比、化工和钼粉 CAGR 代理口径。<br>
+          <a href="https://www.mordorintelligence.com/industry-reports/molybdenum-market" target="_blank" rel="noopener noreferrer">https://www.mordorintelligence.com/industry-reports/molybdenum-market</a>
+        </div>
+        <div class="source-item">
+          <strong>Fortune Business Insights / Grand View Research</strong>
+          用于整体钼市场长期 CAGR 区间校验。<br>
+          <a href="https://www.fortunebusinessinsights.com/molybdenum-market-114117" target="_blank" rel="noopener noreferrer">https://www.fortunebusinessinsights.com/molybdenum-market-114117</a><br>
+          <a href="https://www.grandviewresearch.com/industry-analysis/molybdenum-market-report" target="_blank" rel="noopener noreferrer">https://www.grandviewresearch.com/industry-analysis/molybdenum-market-report</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      页面更新时间：2026-05-06。<br>
+      说明：若你要把这页继续扩成“公司地图版”，下一步最值得补的是各公司矿山资产、焙烧产能、铼回收和下游客户结构。
+    </footer>
+  </div>
+
+  <script>
+    const countryData = [
+      { name: "中国", value: 97000, share: 37.3 },
+      { name: "智利", value: 42000, share: 16.2 },
+      { name: "美国", value: 40000, share: 15.4 },
+      { name: "秘鲁", value: 39000, share: 15.0 },
+      { name: "墨西哥", value: 17000, share: 6.5 },
+      { name: "其他", value: 25000, share: 9.6 }
+    ];
+
+    const miningPlayers = [
+      {
+        name: "Freeport-McMoRan",
+        meta: "2025 产量 92 Mlb，约 41.7 kt Mo",
+        body: "当前最强的全球钼玩家之一，既有 Climax/Henderson 两座美国主产矿，也有美国与秘鲁铜矿副产钼。"
+      },
+      {
+        name: "Southern Copper",
+        meta: "2025 产量 31,153 t Mo",
+        body: "墨西哥和秘鲁铜矿副产体系完整，是全球第二梯队里最稳定的大体量供应者之一。"
+      },
+      {
+        name: "Codelco",
+        meta: "智利最大钼生产商之一",
+        body: "依托智利大型铜矿体系，钼更多体现为高质量副产资源与本地焙烧/钼铁加工能力。"
+      },
+      {
+        name: "Antofagasta",
+        meta: "2025 产量 15,800 t Mo",
+        body: "Los Pelambres 和 Centinela 是重点观察矿山，产量弹性和品位波动都值得跟。"
+      },
+      {
+        name: "CMOC",
+        meta: "2025 产量 13,906 t Mo",
+        body: "中国区钼钨资源重要平台，兼具上游矿山与中游焙烧、钼铁等一体化能力。"
+      },
+      {
+        name: "Jinduicheng",
+        meta: "官方口径全球市场份额约 10%+",
+        body: "亚洲重要主产钼矿和一体化加工平台，兼具资源、焙烧和深加工能力。"
+      }
+    ];
+
+    const processingPlayers = [
+      {
+        name: "Molymet",
+        meta: "全球独立处理龙头",
+        body: "官方口径供应全球约 35% 钼需求，在智利、墨西哥、比利时、德国布局焙烧、钼铁、化工和钼金属。"
+      },
+      {
+        name: "Climax Molybdenum / FCX",
+        meta: "矿山 + 焙烧 + 化工 + 钼铁",
+        body: "美国和英国同时覆盖氧化钼、化工级产品和钼铁，是一体化程度最高的西方玩家之一。"
+      },
+      {
+        name: "Jinduicheng",
+        meta: "焙烧 + 钼铁 + 高溶氧化钼",
+        body: "官方公开能力包括焙烧钼精矿约 3.9 万吨、钼铁约 1 万吨、高溶氧化钼约 1.4 万吨。"
+      },
+      {
+        name: "CMOC",
+        meta: "中国区垂直一体化",
+        body: "矿山、精矿、焙烧和部分深加工链条完整，更适合从资源与加工协同角度跟踪。"
+      },
+      {
+        name: "Codelco Molyb",
+        meta: "智利本地焙烧与钼铁平台",
+        body: "承接智利铜矿副产钼资源，本地化处理能力对智利钼链条非常关键。"
+      },
+      {
+        name: "SeAH M&S / Treibacher",
+        meta: "区域性特色处理商",
+        body: "韩国与奥地利的代表性钼铁/焙烧企业，体量不如 Molymet，但在钢铁客户链中位置明确。"
+      }
+    ];
+
+    const downstreamShares = [
+      { name: "结构钢", share: 34 },
+      { name: "不锈钢", share: 22 },
+      { name: "化工", share: 13 },
+      { name: "工具钢 / 高速钢", share: 9 },
+      { name: "铸铁", share: 7 },
+      { name: "钼金属", share: 6 },
+      { name: "镍基合金", share: 5 },
+      { name: "润滑剂", share: 1 },
+      { name: "其他", share: 3 }
+    ];
+
+    function formatNumber(value) {
+      return new Intl.NumberFormat("zh-CN").format(value);
+    }
+
+    function renderBars() {
+      const container = document.getElementById("countryBars");
+      countryData.forEach((item) => {
+        const row = document.createElement("div");
+        row.className = "bar-row";
+        row.innerHTML = `
+          <div class="bar-head">
+            <strong>${item.name}</strong>
+            <span>${formatNumber(item.value)} 吨 | ${item.share}%</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill" style="width:${item.share}%"></div></div>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function renderPlayers(targetId, data) {
+      const container = document.getElementById(targetId);
+      data.forEach((item) => {
+        const card = document.createElement("article");
+        card.className = "player-card";
+        card.innerHTML = `
+          <h3>${item.name}</h3>
+          <div class="player-meta">${item.meta}</div>
+          <p>${item.body}</p>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderShares() {
+      const container = document.getElementById("downstreamShares");
+      downstreamShares.forEach((item) => {
+        const row = document.createElement("div");
+        row.className = "share-row";
+        row.innerHTML = `
+          <div class="share-head">
+            <strong>${item.name}</strong>
+            <span>${item.share}%</span>
+          </div>
+          <div class="share-track"><div class="share-fill" style="width:${item.share}%"></div></div>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    renderBars();
+    renderPlayers("miningPlayers", miningPlayers);
+    renderPlayers("processingPlayers", processingPlayers);
+    renderShares();
+  </script>
+</body>
+</html>
