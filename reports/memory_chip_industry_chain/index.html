@@ -1,0 +1,1364 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>存储芯片产业链梳理</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --ink: #16202a;
+      --muted: #5b6675;
+      --line: #d9e1eb;
+      --blue: #1f5f99;
+      --blue-soft: #e8f1fb;
+      --green: #168567;
+      --green-soft: #e6f5ef;
+      --orange: #b65c17;
+      --orange-soft: #fff0df;
+      --red: #a23b3b;
+      --red-soft: #fdeaea;
+      --slate: #435066;
+      --slate-soft: #eef2f6;
+      --purple: #6d4aa2;
+      --purple-soft: #f0ebf8;
+      --shadow: 0 12px 30px rgba(37, 47, 64, 0.08);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", Arial, sans-serif;
+      line-height: 1.62;
+    }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page {
+      width: min(1420px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 72px;
+    }
+
+    .hero {
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(110deg, rgba(31, 95, 153, 0.10), rgba(22, 133, 103, 0.08) 48%, rgba(182, 92, 23, 0.10)),
+        var(--panel);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 34px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue);
+      background: var(--blue-soft);
+      border: 1px solid #c7daf0;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 5px 10px;
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: clamp(22px, 2.2vw, 30px);
+      line-height: 1.24;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    p { margin: 0 0 12px; }
+
+    .hero p {
+      max-width: 1000px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 999px;
+      color: var(--slate);
+      font-size: 13px;
+      padding: 6px 10px;
+      white-space: nowrap;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      margin: 16px 0 24px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(246, 248, 251, 0.94);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      box-shadow: 0 8px 18px rgba(37, 47, 64, 0.05);
+    }
+
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: var(--slate);
+      font-size: 13px;
+      font-weight: 700;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+
+    section {
+      margin: 24px 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .section-head p {
+      max-width: 860px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      padding: 16px;
+      min-width: 0;
+    }
+
+    .card.blue { background: var(--blue-soft); border-color: #c7daf0; }
+    .card.green { background: var(--green-soft); border-color: #c4e7db; }
+    .card.orange { background: var(--orange-soft); border-color: #f1d0ad; }
+    .card.red { background: var(--red-soft); border-color: #f2caca; }
+    .card.purple { background: var(--purple-soft); border-color: #d9cdec; }
+    .card.slate { background: var(--slate-soft); border-color: #d6dee8; }
+
+    .metric {
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: 0;
+      margin: 8px 0 4px;
+    }
+
+    .metric small {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .muted { color: var(--muted); }
+    .tiny { font-size: 12px; color: var(--muted); }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--slate);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tag.blue { color: var(--blue); background: var(--blue-soft); border-color: #c7daf0; }
+    .tag.green { color: var(--green); background: var(--green-soft); border-color: #c4e7db; }
+    .tag.orange { color: var(--orange); background: var(--orange-soft); border-color: #f1d0ad; }
+    .tag.red { color: var(--red); background: var(--red-soft); border-color: #f2caca; }
+    .tag.purple { color: var(--purple); background: var(--purple-soft); border-color: #d9cdec; }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 960px;
+      font-size: 13px;
+    }
+
+    th, td {
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #edf3f9;
+      color: #273445;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+    td strong { color: #1f2a38; }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(9, minmax(128px, 1fr));
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .flow-step {
+      position: relative;
+      min-height: 132px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      padding: 14px;
+    }
+
+    .flow-step::after {
+      content: "";
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      width: 10px;
+      height: 2px;
+      background: var(--line);
+    }
+
+    .flow-step:last-child::after { display: none; }
+
+    .num {
+      display: inline-flex;
+      width: 24px;
+      height: 24px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .callout {
+      border-left: 4px solid var(--blue);
+      background: #f8fbff;
+      border-radius: var(--radius);
+      padding: 13px 15px;
+      color: var(--muted);
+      font-size: 13px;
+      margin: 14px 0 0;
+    }
+
+    .bar-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .bar-item {
+      display: grid;
+      grid-template-columns: minmax(100px, 170px) 1fr minmax(58px, auto);
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .bar-track {
+      height: 12px;
+      border-radius: 999px;
+      background: #e9eef5;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: var(--blue);
+      width: var(--w);
+    }
+
+    .bar-fill.green { background: var(--green); }
+    .bar-fill.orange { background: var(--orange); }
+    .bar-fill.red { background: var(--red); }
+    .bar-fill.purple { background: var(--purple); }
+    .bar-fill.slate { background: var(--slate); }
+
+    .chain-map {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .chain-label {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--slate-soft);
+      padding: 12px;
+      font-weight: 800;
+      color: #273445;
+    }
+
+    .company-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 12px;
+      background: #fff;
+      min-height: 54px;
+    }
+
+    .company {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid #d6dee8;
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: #f9fbfd;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .company b {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .warning {
+      border: 1px solid #f0cdcd;
+      background: #fff7f7;
+      color: #7a2d2d;
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      font-size: 13px;
+      margin-top: 14px;
+    }
+
+    .notes {
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .source-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .source-list li { margin: 6px 0; }
+
+    .quote {
+      border: 1px solid var(--line);
+      background: #fbfcfe;
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 980px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .flow { grid-template-columns: repeat(9, 150px); }
+      .chain-map { grid-template-columns: 1fr; }
+      .bar-item { grid-template-columns: 120px 1fr 48px; }
+      section, .hero { padding: 20px; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { width: 100%; padding: 0; }
+      .nav { position: static; box-shadow: none; }
+      section, .hero { break-inside: avoid; box-shadow: none; }
+      a { color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="kicker">Memory Semiconductor Industry Chain</div>
+      <h1>存储芯片产业链梳理</h1>
+      <p>
+        本页按“类别、产业链流程、生产设备、A股映射、CAGR、下游占比、产能约束与价格/扩产跟踪”七个问题展开。
+        需要特别注意：存储芯片是强周期行业，2026年的全球口径受AI服务器、HBM和价格上行影响很大，不同机构预测差异显著。
+      </p>
+      <div class="meta">
+        <span class="pill">更新日期：2026-06-29</span>
+        <span class="pill">口径：半导体存储器/存储芯片</span>
+        <span class="pill">GAGR按 CAGR 即复合年增长率处理</span>
+        <span class="pill">A股公司不构成投资建议</span>
+      </div>
+    </header>
+
+    <nav class="nav" aria-label="页面导航">
+      <a href="#summary">总览</a>
+      <a href="#types">1. 类别</a>
+      <a href="#flow">2. 全流程</a>
+      <a href="#equipment">3. 设备</a>
+      <a href="#players">4. A股玩家</a>
+      <a href="#cagr">5. CAGR</a>
+      <a href="#downstream">6. 下游占比</a>
+      <a href="#capacity">7. 产能约束</a>
+      <a href="#sources">来源与口径</a>
+    </nav>
+
+    <section id="summary">
+      <div class="section-head">
+        <div>
+          <h2>总览：这条链的核心矛盾</h2>
+          <p>存储芯片不是单一产品，而是一组由DRAM、NAND Flash、NOR Flash、SRAM及新型非易失存储组成的技术族。产业链壁垒集中在晶圆制造设备、制程良率、先进封装、控制器固件和长期客户验证。</p>
+        </div>
+      </div>
+      <div class="grid grid-4">
+        <div class="card blue">
+          <h3>主战场</h3>
+          <div class="metric">DRAM + NAND</div>
+          <p class="muted">营收和资本开支的主体。DRAM偏计算内存，NAND偏大容量存储。</p>
+        </div>
+        <div class="card green">
+          <h3>新增量</h3>
+          <div class="metric">HBM / eSSD</div>
+          <p class="muted">AI服务器拉动HBM、DDR5、高容量企业级SSD，改变原有手机/PC主导的需求结构。</p>
+        </div>
+        <div class="card orange">
+          <h3>国产主线</h3>
+          <div class="metric">制造 + 设备</div>
+          <p class="muted">长鑫科技、长江存储带动设备、材料、封测、模组、主控和测试设备国产化。</p>
+        </div>
+        <div class="card red">
+          <h3>最大风险</h3>
+          <div class="metric">价格周期</div>
+          <p class="muted">存储价格上行会放大利润，也会抑制非AI需求；下行则快速压缩库存和毛利。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="types">
+      <div class="section-head">
+        <div>
+          <h2>1. 存储芯片类别</h2>
+          <p>最常用的分类是“断电后数据是否保留”：易失性存储用于运行和缓存，非易失性存储用于长期保存。HBM本质上属于DRAM的高带宽堆叠形态；SSD、UFS、eMMC是NAND颗粒、主控、固件、封装和接口协议的系统级产品。</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>大类</th>
+              <th>细分类别</th>
+              <th>核心特征</th>
+              <th>典型产品/形态</th>
+              <th>主要应用</th>
+              <th>A股相关映射</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>易失性存储</strong><br><span class="tiny">断电丢失数据</span></td>
+              <td>DRAM</td>
+              <td>容量大、成本/bit较低、需刷新；行业规模最大，标准化程度高，价格周期强。</td>
+              <td>DDR4/DDR5、LPDDR、GDDR、HBM</td>
+              <td>服务器、PC、手机、显卡、AI加速卡、车载座舱</td>
+              <td>长鑫科技（IPO注册生效，待发行/上市公告）、北京君正、兆易创新、东芯股份</td>
+            </tr>
+            <tr>
+              <td><strong>易失性存储</strong></td>
+              <td>SRAM</td>
+              <td>速度快、无需刷新、面积大、成本高；常作为CPU/GPU缓存或片上存储。</td>
+              <td>Cache SRAM、嵌入式SRAM</td>
+              <td>CPU/GPU/NPU缓存、MCU、通信芯片</td>
+              <td>芯原股份、华大九天、概伦电子、广立微等偏设计/IP/验证环节</td>
+            </tr>
+            <tr>
+              <td><strong>非易失性存储</strong><br><span class="tiny">断电保留数据</span></td>
+              <td>NAND Flash</td>
+              <td>高密度、低成本/bit、适合块存储；3D堆叠层数和良率是关键。</td>
+              <td>SLC/MLC/TLC/QLC、eMMC、UFS、SSD、存储卡</td>
+              <td>手机、PC、数据中心SSD、汽车、工控、移动存储</td>
+              <td>长江存储（非A股）、江波龙、佰维存储、德明利、国科微、联芸科技</td>
+            </tr>
+            <tr>
+              <td><strong>非易失性存储</strong></td>
+              <td>NOR Flash</td>
+              <td>随机读取快、可片上执行代码、容量通常小于NAND；车规、工控可靠性要求高。</td>
+              <td>SPI NOR、车规NOR、代码型Flash</td>
+              <td>汽车电子、TWS/穿戴、工业控制、IoT、显示驱动</td>
+              <td>兆易创新、普冉股份、东芯股份、恒烁股份、聚辰股份</td>
+            </tr>
+            <tr>
+              <td><strong>非易失性存储</strong></td>
+              <td>EEPROM / EPROM / PROM</td>
+              <td>容量较小、可靠性和擦写次数关键；多用于配置、校准和身份认证数据。</td>
+              <td>EEPROM、车规EEPROM、嵌入式NVM</td>
+              <td>汽车、工业、白电、表计、安全芯片</td>
+              <td>聚辰股份、普冉股份、上海贝岭、复旦微电</td>
+            </tr>
+            <tr>
+              <td><strong>新型存储</strong></td>
+              <td>MRAM / ReRAM / PCM / FeRAM</td>
+              <td>试图兼顾速度、非易失、耐久和低功耗；当前多处于嵌入式或小规模导入阶段。</td>
+              <td>嵌入式MRAM、ReRAM、相变存储</td>
+              <td>MCU、汽车、工业、AI边缘设备、航天军工</td>
+              <td>以研发/生态为主，A股规模化收入仍有限</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        读产业链时建议把“颗粒原厂”和“模组成品厂”分开：原厂负责DRAM/NAND晶圆和裸片，模组厂负责采购颗粒、封装/贴片、主控固件、测试和品牌销售。
+      </div>
+    </section>
+
+    <section id="flow">
+      <div class="section-head">
+        <div>
+          <h2>2. 存储芯片全产业链流程</h2>
+          <p>从商业上看是“设计-材料/设备-晶圆制造-封测-模组-终端”；从制造上看则是数百道前道工艺反复循环，随后进入晶圆测试、切割、封装和最终测试。</p>
+        </div>
+      </div>
+
+      <div class="flow" aria-label="存储芯片产业链流程">
+        <div class="flow-step">
+          <span class="num">1</span>
+          <h3>架构与设计</h3>
+          <p class="tiny">存储单元、外围电路、接口、纠错、主控、固件、验证。</p>
+        </div>
+        <div class="flow-step">
+          <span class="num">2</span>
+          <h3>材料与设备</h3>
+          <p class="tiny">硅片、光刻胶、电子特气、靶材、CMP材料、掩膜版和工艺设备。</p>
+        </div>
+        <div class="flow-step">
+          <span class="num">3</span>
+          <h3>掩膜与硅片</h3>
+          <p class="tiny">版图数据转掩膜，硅片拉晶、切片、研磨、抛光、清洗。</p>
+        </div>
+        <div class="flow-step">
+          <span class="num">4</span>
+          <h3>前道制造</h3>
+          <p class="tiny">沉积、光刻、刻蚀、注入、退火、CMP、清洗、量测循环。</p>
+        </div>
+        <div class="flow-step">
+          <span class="num">5</span>
+          <h3>存储阵列形成</h3>
+          <p class="tiny">DRAM电容/晶体管；3D NAND堆叠、沟道孔、台阶、字线。</p>
+        </div>
+        <div class="flow-step">
+          <span class="num">6</span>
+          <h3>晶圆测试</h3>
+          <p class="tiny">CP测试、坏块/冗余修复、良率分析、分档。</p>
+        </div>
+        <div class="flow-step">
+          <span class="num">7</span>
+          <h3>封装</h3>
+          <p class="tiny">切割、贴片、键合/倒装、塑封、基板、TSV/混合键合。</p>
+        </div>
+        <div class="flow-step">
+          <span class="num">8</span>
+          <h3>成品测试与模组</h3>
+          <p class="tiny">FT、老化、可靠性、SMT、主控固件、SSD/UFS/eMMC模组。</p>
+        </div>
+        <div class="flow-step">
+          <span class="num">9</span>
+          <h3>终端与渠道</h3>
+          <p class="tiny">服务器、手机、PC、汽车、工控、消费电子、分销和品牌渠道。</p>
+        </div>
+      </div>
+
+      <div class="table-wrap" style="margin-top:16px;">
+        <table>
+          <thead>
+            <tr>
+              <th>环节</th>
+              <th>关键动作</th>
+              <th>DRAM特殊点</th>
+              <th>NAND特殊点</th>
+              <th>主要产出</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>设计/验证</strong></td>
+              <td>单元结构、阵列、外围电路、接口PHY、ECC、固件、DFT、可靠性模型。</td>
+              <td>刷新、读写延迟、位线/字线、电容结构、DDR/LPDDR/HBM接口。</td>
+              <td>坏块管理、磨损均衡、LDPC/ECC、FTL固件、ONFI/UFS/PCIe协议。</td>
+              <td>GDS、掩膜数据、测试向量、固件和验证报告。</td>
+            </tr>
+            <tr>
+              <td><strong>硅片/掩膜</strong></td>
+              <td>晶圆制备、EPI、清洗、掩膜写入/检测/修补。</td>
+              <td>高洁净度和缺陷密度影响电容漏电与良率。</td>
+              <td>3D堆叠对颗粒、平整度和应力控制更敏感。</td>
+              <td>抛光硅片、光掩膜版。</td>
+            </tr>
+            <tr>
+              <td><strong>前道工艺循环</strong></td>
+              <td>薄膜沉积、光刻、刻蚀、离子注入、扩散/退火、CMP、湿法清洗、量测。</td>
+              <td>高深宽比电容、低漏电介质、金属布线、阵列均匀性。</td>
+              <td>多层堆叠、高深宽比沟道孔刻蚀、台阶刻蚀、ON/OFF堆叠薄膜。</td>
+              <td>含存储阵列和外围电路的晶圆。</td>
+            </tr>
+            <tr>
+              <td><strong>晶圆测试/修复</strong></td>
+              <td>探针台接触、ATE测试、冗余修复、分档、良率数据反馈。</td>
+              <td>速度、刷新、温度、电压窗口和冗余修复。</td>
+              <td>坏块、擦写寿命、读写干扰、保持特性。</td>
+              <td>KGD或可封装晶圆。</td>
+            </tr>
+            <tr>
+              <td><strong>封装/先进封装</strong></td>
+              <td>切割、贴装、键合、塑封、基板、倒装、TSV、热压/混合键合、薄化。</td>
+              <td>HBM需要TSV、堆叠、微凸点/混合键合、散热和信号完整性。</td>
+              <td>NAND多Die堆叠，封装厚度、翘曲、热管理和可靠性关键。</td>
+              <td>DRAM封装、NAND封装、HBM堆叠。</td>
+            </tr>
+            <tr>
+              <td><strong>模组/系统</strong></td>
+              <td>SMT、主控搭配、固件烧录、系统级测试、认证、品牌销售。</td>
+              <td>内存条、服务器RDIMM/LRDIMM、车规内存。</td>
+              <td>SSD、eMMC、UFS、存储卡、USB盘、企业级SSD。</td>
+              <td>终端可用的存储产品。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head">
+        <div>
+          <h2>3. 每个生产环节所需要的设备</h2>
+          <p>存储芯片前道设备价值量高，DRAM偏先进制程和电容结构，3D NAND偏沉积和高深宽比刻蚀；HBM又把先进封装、测试和热管理推到前台。</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>生产环节</th>
+              <th>所需设备/系统</th>
+              <th>存储芯片关键难点</th>
+              <th>全球头部/代表</th>
+              <th>A股/国产代表</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>设计与验证</strong></td>
+              <td>EDA工具、IP库、仿真验证、形式验证、良率/DFT软件、工程服务器。</td>
+              <td>接口协议、ECC、低功耗、时序闭合、可测性和良率模型。</td>
+              <td>Synopsys、Cadence、Siemens EDA、Rambus等。</td>
+              <td>华大九天、概伦电子、广立微、芯原股份。</td>
+            </tr>
+            <tr>
+              <td><strong>硅片制备</strong></td>
+              <td>单晶炉、切片机、研磨/抛光机、清洗机、外延炉、缺陷检测。</td>
+              <td>12英寸硅片平整度、颗粒、氧含量、缺陷密度。</td>
+              <td>信越、SUMCO、环球晶圆、Siltronic、SK Siltron。</td>
+              <td>沪硅产业、立昂微、TCL中环、神工股份；设备端含晶盛机电、华海清科。</td>
+            </tr>
+            <tr>
+              <td><strong>掩膜版</strong></td>
+              <td>电子束写版、激光写版、掩膜检测、修补、清洗、缺陷复检。</td>
+              <td>多层图形叠加精度和缺陷控制直接影响阵列良率。</td>
+              <td>Photronics、Toppan、DNP、Hoya。</td>
+              <td>清溢光电、路维光电；高端写版/检测设备国产化仍在突破。</td>
+            </tr>
+            <tr>
+              <td><strong>光刻</strong></td>
+              <td>DUV/EUV光刻机、涂胶显影Track、烘烤、对准、套刻控制。</td>
+              <td>关键层线宽、套刻精度、缺陷和光刻胶体系。</td>
+              <td>ASML、Nikon、Canon、TEL。</td>
+              <td>芯源微（涂胶显影/清洗）；高端光刻整机A股暂无成熟头部。</td>
+            </tr>
+            <tr>
+              <td><strong>刻蚀</strong></td>
+              <td>介质刻蚀、硅刻蚀、金属刻蚀、ALE、去胶灰化、湿法刻蚀。</td>
+              <td>3D NAND沟道孔和台阶刻蚀要求高深宽比、均匀性和低损伤。</td>
+              <td>Lam Research、TEL、Applied Materials。</td>
+              <td>中微公司、北方华创。</td>
+            </tr>
+            <tr>
+              <td><strong>薄膜沉积</strong></td>
+              <td>CVD、PECVD、LPCVD、ALD、PVD、外延、炉管。</td>
+              <td>DRAM高k介质、电容电极；NAND ON/OFF多层堆叠薄膜均匀性。</td>
+              <td>Applied Materials、Lam、TEL、ASM International。</td>
+              <td>北方华创、拓荆科技、微导纳米、中微公司。</td>
+            </tr>
+            <tr>
+              <td><strong>离子注入/热处理</strong></td>
+              <td>离子注入机、扩散炉、氧化炉、RTP、退火炉。</td>
+              <td>掺杂轮廓、结深、漏电和器件一致性。</td>
+              <td>Applied Materials、Axcelis、Sumitomo、TEL。</td>
+              <td>万业企业（凯世通）、北方华创。</td>
+            </tr>
+            <tr>
+              <td><strong>CMP与清洗</strong></td>
+              <td>CMP抛光机、清洗机、湿法槽、刷洗、干燥、高纯化学品供应。</td>
+              <td>多层堆叠的全局平坦化、颗粒控制、金属污染控制。</td>
+              <td>Ebara、Applied Materials、SCREEN、TEL、Lam。</td>
+              <td>华海清科、盛美上海、至纯科技；材料端安集科技、鼎龙股份。</td>
+            </tr>
+            <tr>
+              <td><strong>量测/检测</strong></td>
+              <td>薄膜量测、CD-SEM、套刻量测、缺陷检测、电子束复检、椭偏仪。</td>
+              <td>存储阵列面积大，微小缺陷会放大为坏块和良率损失。</td>
+              <td>KLA、Applied Materials、Hitachi High-Tech、Onto。</td>
+              <td>中科飞测、精测电子、上海睿励（非A股）等。</td>
+            </tr>
+            <tr>
+              <td><strong>晶圆测试</strong></td>
+              <td>ATE测试机、探针台、探针卡、温控系统、修复/老化设备。</td>
+              <td>高并行、高速接口、坏块/冗余修复、温度和可靠性筛选。</td>
+              <td>Advantest、Teradyne、FormFactor、Tokyo Seimitsu。</td>
+              <td>长川科技、精智达、华峰测控、强一股份（探针卡，北交所）。</td>
+            </tr>
+            <tr>
+              <td><strong>封装</strong></td>
+              <td>划片机、贴片机、键合机、倒装设备、塑封、植球、AOI/X-ray。</td>
+              <td>NAND多Die堆叠薄型化；DRAM封装信号完整性和散热。</td>
+              <td>DISCO、ASMPT、BESI、Kulicke & Soffa。</td>
+              <td>长电科技、通富微电、华天科技、甬矽电子；设备端长川科技、新益昌等。</td>
+            </tr>
+            <tr>
+              <td><strong>HBM/先进封装</strong></td>
+              <td>TSV刻蚀/填铜、晶圆薄化、临时键合、微凸点、TCB、混合键合、先进检测。</td>
+              <td>堆叠良率、热阻、互连密度、翘曲、带宽和功耗。</td>
+              <td>Applied Materials、Lam、BESI、ASMPT、EVG、TEL。</td>
+              <td>盛美上海、华海清科、拓荆科技、北方华创；封测端长电科技、通富微电。</td>
+            </tr>
+            <tr>
+              <td><strong>模组制造</strong></td>
+              <td>SMT贴片、回流焊、AOI、X-ray、固件烧录、SSD/内存测试平台。</td>
+              <td>颗粒筛选、主控适配、固件稳定性、长期读写可靠性。</td>
+              <td>Kingston、ADATA、Micron、Samsung、SK hynix。</td>
+              <td>江波龙、佰维存储、德明利、深科技、朗科科技。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="players">
+      <div class="section-head">
+        <div>
+          <h2>4. 每个产业链环节的A股头部玩家</h2>
+          <p>下面按产业链环节列出A股可交易映射。长江存储是国内NAND核心原厂但非A股；长鑫科技已获证监会同意科创板IPO注册，截至本页更新日仍需以发行上市公告为准。</p>
+        </div>
+      </div>
+
+      <div class="chain-map">
+        <div class="chain-label">EDA / IP / 设计服务</div>
+        <div class="company-cloud">
+          <span class="company">华大九天 <b>301269</b></span>
+          <span class="company">概伦电子 <b>688206</b></span>
+          <span class="company">广立微 <b>301095</b></span>
+          <span class="company">芯原股份 <b>688521</b></span>
+        </div>
+
+        <div class="chain-label">存储芯片设计</div>
+        <div class="company-cloud">
+          <span class="company">兆易创新 <b>603986</b></span>
+          <span class="company">北京君正 <b>300223</b></span>
+          <span class="company">东芯股份 <b>688110</b></span>
+          <span class="company">普冉股份 <b>688766</b></span>
+          <span class="company">聚辰股份 <b>688123</b></span>
+          <span class="company">恒烁股份 <b>688416</b></span>
+        </div>
+
+        <div class="chain-label">主控芯片/固件</div>
+        <div class="company-cloud">
+          <span class="company">联芸科技 <b>688449</b></span>
+          <span class="company">国科微 <b>300672</b></span>
+          <span class="company">德明利 <b>001309</b></span>
+          <span class="company">江波龙 <b>301308</b></span>
+        </div>
+
+        <div class="chain-label">晶圆制造/原厂</div>
+        <div class="company-cloud">
+          <span class="company">长鑫科技 <b>注册生效</b></span>
+          <span class="company">中芯国际 <b>688981</b></span>
+          <span class="company">华虹公司 <b>688347</b></span>
+          <span class="company">士兰微 <b>600460</b></span>
+          <span class="company">长江存储 <b>非A股</b></span>
+        </div>
+
+        <div class="chain-label">半导体材料</div>
+        <div class="company-cloud">
+          <span class="company">沪硅产业 <b>688126</b></span>
+          <span class="company">立昂微 <b>605358</b></span>
+          <span class="company">TCL中环 <b>002129</b></span>
+          <span class="company">江丰电子 <b>300666</b></span>
+          <span class="company">南大光电 <b>300346</b></span>
+          <span class="company">华特气体 <b>688268</b></span>
+          <span class="company">金宏气体 <b>688106</b></span>
+          <span class="company">安集科技 <b>688019</b></span>
+          <span class="company">鼎龙股份 <b>300054</b></span>
+          <span class="company">上海新阳 <b>300236</b></span>
+          <span class="company">清溢光电 <b>688138</b></span>
+          <span class="company">路维光电 <b>688401</b></span>
+          <span class="company">雅克科技 <b>002409</b></span>
+        </div>
+
+        <div class="chain-label">前道设备</div>
+        <div class="company-cloud">
+          <span class="company">北方华创 <b>002371</b></span>
+          <span class="company">中微公司 <b>688012</b></span>
+          <span class="company">拓荆科技 <b>688072</b></span>
+          <span class="company">华海清科 <b>688120</b></span>
+          <span class="company">盛美上海 <b>688082</b></span>
+          <span class="company">芯源微 <b>688037</b></span>
+          <span class="company">微导纳米 <b>688147</b></span>
+          <span class="company">万业企业 <b>600641</b></span>
+          <span class="company">至纯科技 <b>603690</b></span>
+        </div>
+
+        <div class="chain-label">量测/检测/测试设备</div>
+        <div class="company-cloud">
+          <span class="company">中科飞测 <b>688361</b></span>
+          <span class="company">精测电子 <b>300567</b></span>
+          <span class="company">长川科技 <b>300604</b></span>
+          <span class="company">精智达 <b>688627</b></span>
+          <span class="company">华峰测控 <b>688200</b></span>
+        </div>
+
+        <div class="chain-label">封测/先进封装</div>
+        <div class="company-cloud">
+          <span class="company">长电科技 <b>600584</b></span>
+          <span class="company">通富微电 <b>002156</b></span>
+          <span class="company">华天科技 <b>002185</b></span>
+          <span class="company">甬矽电子 <b>688362</b></span>
+          <span class="company">深科技 <b>000021</b></span>
+        </div>
+
+        <div class="chain-label">模组/品牌/系统产品</div>
+        <div class="company-cloud">
+          <span class="company">江波龙 <b>301308</b></span>
+          <span class="company">佰维存储 <b>688525</b></span>
+          <span class="company">德明利 <b>001309</b></span>
+          <span class="company">深科技 <b>000021</b></span>
+          <span class="company">朗科科技 <b>300042</b></span>
+          <span class="company">协创数据 <b>300857</b></span>
+        </div>
+
+        <div class="chain-label">分销/供应链服务</div>
+        <div class="company-cloud">
+          <span class="company">中电港 <b>001287</b></span>
+          <span class="company">香农芯创 <b>300475</b></span>
+          <span class="company">深圳华强 <b>000062</b></span>
+          <span class="company">力源信息 <b>300184</b></span>
+        </div>
+
+        <div class="chain-label">核心下游</div>
+        <div class="company-cloud">
+          <span class="company">浪潮信息 <b>000977</b></span>
+          <span class="company">中科曙光 <b>603019</b></span>
+          <span class="company">工业富联 <b>601138</b></span>
+          <span class="company">紫光股份 <b>000938</b></span>
+          <span class="company">海康威视 <b>002415</b></span>
+          <span class="company">德赛西威 <b>002920</b></span>
+        </div>
+      </div>
+
+      <div class="warning">
+        注意：A股映射不等于全球产业地位。存储原厂的全球竞争仍由三星、SK海力士、美光、铠侠/西部数据等主导；国内最核心的长江存储和长鑫科技与大量A股设备、材料、封测、模组公司形成产业协同。
+      </div>
+    </section>
+
+    <section id="cagr">
+      <div class="section-head">
+        <div>
+          <h2>5. 国内产业链及市场 CAGR</h2>
+          <p>用户问题中的“GAGR”这里按CAGR处理。由于2026年存储价格进入异常上行周期，建议同时看“国内中商口径”“全球常态化口径”和“全球超级周期口径”。</p>
+        </div>
+      </div>
+
+      <div class="grid grid-4">
+        <div class="card blue">
+          <h3>中国半导体存储器市场</h3>
+          <div class="metric">7.4% <small>CAGR</small></div>
+          <p class="muted">2023-2026E：3943亿元至4888亿元。</p>
+        </div>
+        <div class="card green">
+          <h3>全球存储市场</h3>
+          <div class="metric">9.5% <small>CAGR</small></div>
+          <p class="muted">中商口径2024-2026E：2059亿美元至2470亿美元。</p>
+        </div>
+        <div class="card orange">
+          <h3>全球常态化长期</h3>
+          <div class="metric">11.3% <small>CAGR</small></div>
+          <p class="muted">Fortune BI口径2026-2034：1896.5亿美元至4479.3亿美元。</p>
+        </div>
+        <div class="card red">
+          <h3>全球超级周期</h3>
+          <div class="metric">86.0% <small>CAGR</small></div>
+          <p class="muted">Gartner口径2025-2027：2163亿美元至7481亿美元，受价格驱动。</p>
+        </div>
+      </div>
+
+      <div class="grid grid-2" style="margin-top:16px;">
+        <div class="card">
+          <h3>中国市场规模：亿元</h3>
+          <div class="bar-list">
+            <div class="bar-item"><span>2023</span><div class="bar-track"><div class="bar-fill blue" style="--w:80.7%;"></div></div><strong>3943</strong></div>
+            <div class="bar-item"><span>2024</span><div class="bar-track"><div class="bar-fill blue" style="--w:87.3%;"></div></div><strong>4267</strong></div>
+            <div class="bar-item"><span>2025E</span><div class="bar-track"><div class="bar-fill blue" style="--w:93.7%;"></div></div><strong>4580</strong></div>
+            <div class="bar-item"><span>2026E</span><div class="bar-track"><div class="bar-fill blue" style="--w:100%;"></div></div><strong>4888</strong></div>
+          </div>
+          <p class="tiny" style="margin-top:12px;">计算：CAGR = (4888 / 3943)^(1/3) - 1 = 7.42%。</p>
+        </div>
+
+        <div class="card">
+          <h3>全球存储市场：亿美元，多口径对比</h3>
+          <div class="bar-list">
+            <div class="bar-item"><span>中商 2024</span><div class="bar-track"><div class="bar-fill green" style="--w:82.9%;"></div></div><strong>2059</strong></div>
+            <div class="bar-item"><span>中商 2025E</span><div class="bar-track"><div class="bar-fill green" style="--w:94.4%;"></div></div><strong>2342</strong></div>
+            <div class="bar-item"><span>中商 2026E</span><div class="bar-track"><div class="bar-fill green" style="--w:100%;"></div></div><strong>2470</strong></div>
+            <div class="bar-item"><span>Gartner 2026E</span><div class="bar-track"><div class="bar-fill red" style="--w:84.7%;"></div></div><strong>6333</strong></div>
+            <div class="bar-item"><span>Gartner 2027E</span><div class="bar-track"><div class="bar-fill red" style="--w:100%;"></div></div><strong>7481</strong></div>
+          </div>
+          <p class="tiny" style="margin-top:12px;">中商偏行业常规预测；Gartner/WSTS为2026年AI与价格上行后的重估口径。</p>
+        </div>
+      </div>
+
+      <div class="grid grid-3" style="margin-top:16px;">
+        <div class="card slate">
+          <h3>半导体设备总市场</h3>
+          <div class="metric">8.3% <small>CAGR</small></div>
+          <p class="muted">SEMI预测2025年1330亿美元、2026年1450亿美元、2027年1560亿美元。</p>
+        </div>
+        <div class="card slate">
+          <h3>DRAM设备支出</h3>
+          <div class="metric">11.4% <small>CAGR</small></div>
+          <p class="muted">SEMI口径2025-2027，HBM和先进节点升级驱动。</p>
+        </div>
+        <div class="card slate">
+          <h3>NAND设备支出</h3>
+          <div class="metric">10.0% <small>CAGR</small></div>
+          <p class="muted">SEMI口径2025-2027，3D NAND堆叠和扩产驱动。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="downstream">
+      <div class="section-head">
+        <div>
+          <h2>6. 国内/全球下游市场占比</h2>
+          <p>下游占比存在三种常见口径：按收入、按bit需求、按产品形态。下面把国内应用结构、全球DRAM/NAND应用结构和国内产品形态分开展示，避免把不同口径相加。</p>
+        </div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>国内存储芯片下游应用结构</h3>
+          <div class="bar-list">
+            <div class="bar-item"><span>手机</span><div class="bar-track"><div class="bar-fill blue" style="--w:38.7%;"></div></div><strong>38.7%</strong></div>
+            <div class="bar-item"><span>服务器</span><div class="bar-track"><div class="bar-fill green" style="--w:15%;"></div></div><strong>15.0%</strong></div>
+            <div class="bar-item"><span>电脑</span><div class="bar-track"><div class="bar-fill orange" style="--w:12.9%;"></div></div><strong>12.9%</strong></div>
+            <div class="bar-item"><span>消费电子</span><div class="bar-track"><div class="bar-fill purple" style="--w:9.4%;"></div></div><strong>9.4%</strong></div>
+            <div class="bar-item"><span>显卡</span><div class="bar-track"><div class="bar-fill red" style="--w:7.4%;"></div></div><strong>7.4%</strong></div>
+            <div class="bar-item"><span>其他</span><div class="bar-track"><div class="bar-fill slate" style="--w:16.6%;"></div></div><strong>16.6%</strong></div>
+          </div>
+          <p class="tiny" style="margin-top:12px;">来源：华经产业研究院，2026年3月发布。</p>
+        </div>
+
+        <div class="card">
+          <h3>国内/全球产品形态结构</h3>
+          <div class="bar-list">
+            <div class="bar-item"><span>嵌入式存储</span><div class="bar-track"><div class="bar-fill blue" style="--w:42.7%;"></div></div><strong>42.7%</strong></div>
+            <div class="bar-item"><span>内存条</span><div class="bar-track"><div class="bar-fill green" style="--w:28.3%;"></div></div><strong>28.3%</strong></div>
+            <div class="bar-item"><span>固态硬盘</span><div class="bar-track"><div class="bar-fill orange" style="--w:15.7%;"></div></div><strong>15.7%</strong></div>
+            <div class="bar-item"><span>HBM</span><div class="bar-track"><div class="bar-fill red" style="--w:8.3%;"></div></div><strong>8.3%</strong></div>
+            <div class="bar-item"><span>移动存储</span><div class="bar-track"><div class="bar-fill purple" style="--w:2.8%;"></div></div><strong>2.8%</strong></div>
+            <div class="bar-item"><span>其他</span><div class="bar-track"><div class="bar-fill slate" style="--w:2.2%;"></div></div><strong>2.2%</strong></div>
+          </div>
+          <p class="tiny" style="margin-top:12px;">该组为产品形态/市场结构口径，不等同于终端行业占比。</p>
+        </div>
+      </div>
+
+      <div class="grid grid-3" style="margin-top:16px;">
+        <div class="card blue">
+          <h3>全球DRAM下游</h3>
+          <div class="bar-list">
+            <div class="bar-item"><span>移动终端</span><div class="bar-track"><div class="bar-fill blue" style="--w:35%;"></div></div><strong>35%</strong></div>
+            <div class="bar-item"><span>服务器</span><div class="bar-track"><div class="bar-fill green" style="--w:33%;"></div></div><strong>33%</strong></div>
+            <div class="bar-item"><span>PC</span><div class="bar-track"><div class="bar-fill orange" style="--w:16%;"></div></div><strong>16%</strong></div>
+            <div class="bar-item"><span>其他</span><div class="bar-track"><div class="bar-fill slate" style="--w:16%;"></div></div><strong>16%</strong></div>
+          </div>
+          <p class="tiny" style="margin-top:12px;">中商/券商整理口径。CFM白皮书另预计2025年服务器DRAM占比约36%。</p>
+        </div>
+
+        <div class="card green">
+          <h3>全球NAND Flash下游</h3>
+          <div class="bar-list">
+            <div class="bar-item"><span>移动终端</span><div class="bar-track"><div class="bar-fill blue" style="--w:34%;"></div></div><strong>34%</strong></div>
+            <div class="bar-item"><span>服务器</span><div class="bar-track"><div class="bar-fill green" style="--w:26%;"></div></div><strong>26%</strong></div>
+            <div class="bar-item"><span>PC</span><div class="bar-track"><div class="bar-fill orange" style="--w:22%;"></div></div><strong>22%</strong></div>
+            <div class="bar-item"><span>其他</span><div class="bar-track"><div class="bar-fill slate" style="--w:18%;"></div></div><strong>18%</strong></div>
+          </div>
+          <p class="tiny" style="margin-top:12px;">中商/券商整理口径。CFM白皮书指出2025年服务器NAND占比可达约30%。</p>
+        </div>
+
+        <div class="card orange">
+          <h3>全球宽口径终端</h3>
+          <div class="metric">27.72%</div>
+          <p class="muted">Fortune BI预计2026年消费电子仍为半导体存储最大终端类别；IT与通信/数据中心是最快增长的主线之一。</p>
+          <div class="tag-row">
+            <span class="tag orange">手机</span>
+            <span class="tag orange">PC</span>
+            <span class="tag green">数据中心</span>
+            <span class="tag red">汽车</span>
+            <span class="tag purple">工业/医疗</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        趋势判断：手机仍是国内存储消费大盘的最大单项，但新增边际更偏服务器、AI加速卡、HBM和企业级SSD；汽车和工业的占比不一定最大，但验证周期长、可靠性要求高，利润率和国产替代价值更突出。
+      </div>
+    </section>
+
+    <section id="capacity">
+      <div class="section-head">
+        <div>
+          <h2>7. 产能约束与价格/扩产跟踪</h2>
+          <p>评分规则：重要程度1为最重要、5为一般；产能约束程度1为最约束、5为一般。判断基于2026年中公开资料和产业链逻辑，偏“环节约束力”而非单家公司估值。</p>
+        </div>
+      </div>
+
+      <div class="grid grid-4">
+        <div class="card red">
+          <h3>最强瓶颈</h3>
+          <div class="metric">HBM</div>
+          <p class="muted">HBM晶圆、TSV/堆叠、先进封装、良率和HBM测试共同决定AI存储供给。</p>
+        </div>
+        <div class="card orange">
+          <h3>价格弹性最大</h3>
+          <div class="metric">DRAM</div>
+          <p class="muted">服务器DDR5、HBM挤占传统DRAM产能，PC/手机内存被动跟涨。</p>
+        </div>
+        <div class="card green">
+          <h3>NAND分化</h3>
+          <div class="metric">eSSD</div>
+          <p class="muted">企业级SSD和大容量NAND受AI数据中心拉动，消费级NAND改善较慢。</p>
+        </div>
+        <div class="card blue">
+          <h3>设备约束</h3>
+          <div class="metric">刻蚀/沉积</div>
+          <p class="muted">DRAM先进节点和3D NAND堆叠都依赖高端刻蚀、薄膜、量测和清洗设备。</p>
+        </div>
+      </div>
+
+      <div class="table-wrap" style="margin-top:16px;">
+        <table>
+          <thead>
+            <tr>
+              <th>产业链环节</th>
+              <th>重要程度</th>
+              <th>产能约束</th>
+              <th>当前产能情况</th>
+              <th>瓶颈判断</th>
+              <th>可收集扩产信息</th>
+              <th>可收集涨价信息</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>EDA/IP/设计验证</strong></td>
+              <td><span class="tag blue">2</span></td>
+              <td><span class="tag orange">3</span></td>
+              <td>全球三大EDA仍占主导；国内EDA在模拟、版图、良率分析、测试数据分析等点状突破，但先进存储全流程仍依赖国际生态。</td>
+              <td><span class="tag orange">局部瓶颈</span> 不是物理产能瓶颈，但会约束先进DRAM/HBM接口、验证效率和良率爬坡。</td>
+              <td>国产EDA公司继续补齐数字验证、良率、DFT和先进封装协同设计工具；AI辅助设计和工艺协同优化投入增加。</td>
+              <td>EDA更多是订阅/授权价格和国产替代议价，不是典型涨价链；先进封装、HBM相关IP授权价值提升。</td>
+            </tr>
+            <tr>
+              <td><strong>硅片/掩膜版/关键材料</strong></td>
+              <td><span class="tag blue">2</span></td>
+              <td><span class="tag orange">3</span></td>
+              <td>12英寸硅片、先进光刻胶、高纯电子特气、CMP材料、靶材等供应总体可支撑扩产，但高端品类仍由海外龙头主导，国内验证周期长。</td>
+              <td><span class="tag orange">局部瓶颈</span> 高端光刻胶、先进制程用硅片、部分特气和CMP耗材会影响良率和导入速度。</td>
+              <td>国内硅片、电子特气、CMP抛光液/垫、光刻胶、掩膜版厂商持续扩建12英寸和先进制程材料产线；长鑫/长存扩产会带动本土材料验证放量。</td>
+              <td>材料涨价通常滞后晶圆厂扩产，2026年更可能表现为高端材料议价改善和长协锁量，而非全品类同步涨价。</td>
+            </tr>
+            <tr>
+              <td><strong>前道设备：光刻</strong></td>
+              <td><span class="tag blue">1</span></td>
+              <td><span class="tag red">2</span></td>
+              <td>高端光刻机供给高度集中，DUV/EUV交付周期和出口限制影响先进存储扩产节奏；成熟制程设备相对可得。</td>
+              <td><span class="tag red">瓶颈</span> 对先进DRAM/HBM和高层数NAND关键层约束强，尤其影响中国大陆先进产能节奏。</td>
+              <td>全球原厂扩产通常优先配置先进光刻资源；国内涂胶显影、清洗等光刻配套设备导入增加，但高端光刻整机仍是短板。</td>
+              <td>光刻设备不是公开现货涨价模式，更多体现为排队、长交期、服务/维护和二手设备溢价。</td>
+            </tr>
+            <tr>
+              <td><strong>前道设备：刻蚀/沉积/热处理</strong></td>
+              <td><span class="tag blue">1</span></td>
+              <td><span class="tag red">1</span></td>
+              <td>DRAM先进节点、HBM、3D NAND高层数堆叠都显著增加刻蚀和沉积步骤；3D NAND对高深宽比刻蚀和ALD/CVD需求尤其强。</td>
+              <td><span class="tag red">核心瓶颈</span> 制程能力、交付周期、装机调试和工艺配方共同约束新增产能。</td>
+              <td>SEMI预计2025-2027年DRAM设备支出持续增长，NAND设备支出也恢复增长；国内北方华创、中微公司、拓荆科技、微导纳米等受益国产线扩产和替代。</td>
+              <td>设备通常按订单和配置定价，公开涨价信息少；但紧缺设备可能通过长交期、预付款、服务包和高端配置提升ASP。</td>
+            </tr>
+            <tr>
+              <td><strong>CMP/清洗/量测检测</strong></td>
+              <td><span class="tag blue">2</span></td>
+              <td><span class="tag red">2</span></td>
+              <td>存储阵列面积大、层数多，缺陷检测、平坦化、颗粒控制对良率影响明显；国内设备已有较强替代窗口。</td>
+              <td><span class="tag orange">局部瓶颈</span> 先进量测检测和高洁净清洗能力决定良率爬坡，不一定卡新增晶圆数，但会卡可销售良品。</td>
+              <td>华海清科、盛美上海、中科飞测、精测电子等随国内晶圆厂扩产导入；先进封装清洗、薄化、量测需求同步增加。</td>
+              <td>暂无统一涨价周期，更多体现为高端机型结构占比提升、服务收入和耗材消耗增加。</td>
+            </tr>
+            <tr>
+              <td><strong>DRAM/HBM晶圆制造</strong></td>
+              <td><span class="tag blue">1</span></td>
+              <td><span class="tag red">1</span></td>
+              <td>全球DRAM供给高度集中；HBM占用先进DRAM晶圆和封装资源，挤出部分DDR/LPDDR产能。中国大陆以长鑫科技为核心，先进节点和高端产品仍在追赶。</td>
+              <td><span class="tag red">核心瓶颈</span> 2026年AI服务器需求导致HBM、DDR5、服务器DRAM供需紧张，是全链最强约束之一。</td>
+              <td>SK海力士、三星、美光持续扩HBM；美光曾披露2026年HBM产能基本售罄并规划长期扩产；长鑫科技IPO注册生效，市场关注其12英寸DRAM和先进产品扩产。</td>
+              <td>2026年DRAM合约价多轮上调，服务器DRAM、DDR5和HBM涨价弹性更高；TrendForce/IDC/Gartner均提示AI需求和存储短缺推升价格。</td>
+            </tr>
+            <tr>
+              <td><strong>3D NAND晶圆制造</strong></td>
+              <td><span class="tag blue">1</span></td>
+              <td><span class="tag orange">2</span></td>
+              <td>NAND经历前期供给收缩后恢复，企业级SSD和高容量NAND需求强于消费级；长江存储是国内核心原厂。</td>
+              <td><span class="tag orange">阶段性瓶颈</span> 高容量企业级SSD、QLC/高层数产品和高可靠性颗粒更紧，低端消费级相对宽松。</td>
+              <td>全球NAND原厂逐步恢复资本开支；市场持续关注长江存储武汉项目、设备安装和高层数产品导入，公开产能数据需谨慎核实。</td>
+              <td>2026年NAND合约价受eSSD和大容量SSD拉动改善，消费级价格弹性低于企业级SSD和高容量产品。</td>
+            </tr>
+            <tr>
+              <td><strong>NOR / EEPROM / SLC NAND等利基存储</strong></td>
+              <td><span class="tag green">3</span></td>
+              <td><span class="tag green">4</span></td>
+              <td>整体产能不像DRAM/NAND紧张，但车规、工控、高可靠性、小容量细分品类验证周期长，供给结构分化。</td>
+              <td><span class="tag green">非主瓶颈</span> 行业约束更多来自客户认证、规格和产品组合，不是总产能。</td>
+              <td>兆易创新、普冉股份、东芯股份等继续推进车规、工控、IoT和高可靠产品线；成熟晶圆代工产能恢复后供给压力较小。</td>
+              <td>低容量通用品竞争充分，涨价难；车规/工业高可靠产品价格更稳定，部分规格可能随晶圆成本和需求修复小幅改善。</td>
+            </tr>
+            <tr>
+              <td><strong>晶圆测试/探针卡/ATE</strong></td>
+              <td><span class="tag blue">2</span></td>
+              <td><span class="tag orange">2</span></td>
+              <td>高并行、高速、高温测试需求上升；HBM、DDR5、LPDDR5、eSSD对测试时间、测试覆盖率和探针卡可靠性要求提高。</td>
+              <td><span class="tag orange">局部瓶颈</span> HBM和高端存储测试能力会卡良品出货节奏，传统低端测试相对宽松。</td>
+              <td>长川科技、精智达、华峰测控等推进存储测试设备；海外Advantest/Teradyne订单受AI和HBM拉动。</td>
+              <td>测试设备公开涨价少，但高端存储测试机、探针卡和老化测试服务ASP有结构性提升。</td>
+            </tr>
+            <tr>
+              <td><strong>封装/先进封装/HBM堆叠</strong></td>
+              <td><span class="tag blue">1</span></td>
+              <td><span class="tag red">1</span></td>
+              <td>HBM需要TSV、薄化、堆叠、键合、封装测试和散热协同；CoWoS/2.5D先进封装产能也会影响GPU+HBM最终供给。</td>
+              <td><span class="tag red">核心瓶颈</span> HBM堆叠良率、先进封装产能和测试能力共同限制AI存储交付。</td>
+              <td>SK海力士、三星、美光扩HBM封装能力；台积电等扩CoWoS/先进封装，国内长电科技、通富微电、华天科技、甬矽电子布局先进封装能力。</td>
+              <td>HBM封装、先进封装和测试服务议价提升；2.5D封装产能紧张时会推高相关服务价格和设备需求。</td>
+            </tr>
+            <tr>
+              <td><strong>存储主控/固件</strong></td>
+              <td><span class="tag blue">2</span></td>
+              <td><span class="tag green">3</span></td>
+              <td>消费级SSD主控竞争较充分；企业级SSD、PCIe 5.0/6.0、车规、UFS高端主控壁垒更高，固件和客户认证周期长。</td>
+              <td><span class="tag orange">局部瓶颈</span> 对eSSD、车规和国产替代项目有约束，普通消费级不是主要瓶颈。</td>
+              <td>联芸科技、国科微、德明利、江波龙等推进PCIe、UFS、eMMC、车规和企业级控制器；AI服务器推动企业级SSD主控升级。</td>
+              <td>主控单价可能随PCIe 5.0/企业级规格升级上行，但通用消费级主控价格竞争仍强。</td>
+            </tr>
+            <tr>
+              <td><strong>模组/SSD/内存条制造</strong></td>
+              <td><span class="tag green">3</span></td>
+              <td><span class="tag green">4</span></td>
+              <td>SMT和模组制造物理产能相对充足，核心变量是颗粒供给、价格、客户认证、库存和资金周转。</td>
+              <td><span class="tag green">非主瓶颈</span> 瓶颈通常上移到颗粒、主控、高端测试和客户认证。</td>
+              <td>江波龙、佰维存储、德明利、深科技等围绕车规、工业、企业级SSD和品牌渠道扩产品线；企业级SSD产线和验证能力是扩张重点。</td>
+              <td>模组价格跟随DRAM/NAND颗粒价格传导，2026年内存条、SSD、UFS/eMMC均可能分批调价；利润取决于库存成本和涨价传导速度。</td>
+            </tr>
+            <tr>
+              <td><strong>分销/渠道/库存</strong></td>
+              <td><span class="tag green">4</span></td>
+              <td><span class="tag green">5</span></td>
+              <td>渠道不是产能瓶颈，但会放大周期波动。涨价周期中，渠道库存和长协资源成为利润来源；跌价周期中则形成减值风险。</td>
+              <td><span class="tag green">非瓶颈</span> 对供需情绪和价格传导影响大，对物理产能影响小。</td>
+              <td>中电港、香农芯创、深圳华强等加强原厂代理、服务器客户和国产替代供应链服务。</td>
+              <td>涨价周期中渠道报价上行最快，但波动也最大；需区分真实需求和囤货需求。</td>
+            </tr>
+            <tr>
+              <td><strong>下游：AI服务器/数据中心</strong></td>
+              <td><span class="tag blue">1</span></td>
+              <td><span class="tag red">1</span></td>
+              <td>AI服务器是2026年存储增量需求核心，拉动HBM、DDR5/RDIMM、大容量eSSD和高速接口产品。</td>
+              <td><span class="tag red">需求侧核心约束</span> GPU、HBM、先进封装、电力和整机交付共同决定实际装机节奏。</td>
+              <td>云厂商、GPU厂商和服务器厂商持续上调AI资本开支；国内浪潮信息、中科曙光、工业富联等受AI服务器需求带动。</td>
+              <td>AI链条最强势，HBM、服务器DRAM、企业级SSD价格和长协议价能力提升。</td>
+            </tr>
+            <tr>
+              <td><strong>下游：手机/PC/消费电子</strong></td>
+              <td><span class="tag green">3</span></td>
+              <td><span class="tag green">4</span></td>
+              <td>传统终端需求修复温和，但存储价格上行会推高BOM成本，可能压缩低端机和PC配置升级。</td>
+              <td><span class="tag green">非产能瓶颈</span> 更像需求承接能力瓶颈，若涨价过快会抑制终端补库。</td>
+              <td>终端厂商倾向提前锁定LPDDR、UFS、SSD和内存条资源；AI PC和端侧AI手机可能提高单机容量。</td>
+              <td>DRAM/NAND涨价会传导到内存条、SSD和手机存储配置；IDC提示存储短缺可能影响2026年手机和PC市场。</td>
+            </tr>
+            <tr>
+              <td><strong>下游：汽车/工业/IoT</strong></td>
+              <td><span class="tag green">3</span></td>
+              <td><span class="tag green">4</span></td>
+              <td>总量小于手机/服务器，但车规和工业要求高可靠、长周期供货，认证周期长，国产替代空间大。</td>
+              <td><span class="tag orange">局部瓶颈</span> 车规认证、质量体系和长期供货能力比晶圆总产能更关键。</td>
+              <td>国内NOR、EEPROM、LPDDR、eMMC/UFS、车规SSD和工业存储厂商加速导入车厂和Tier1。</td>
+              <td>车规存储价格波动低于消费级，更多体现为规格升级和国产替代带来的结构性ASP提升。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid grid-3" style="margin-top:16px;">
+        <div class="card red">
+          <h3>瓶颈排序</h3>
+          <p class="muted">1. HBM/DRAM晶圆制造；2. HBM先进封装与测试；3. 刻蚀/沉积设备；4. 高端光刻与量测；5. 企业级SSD颗粒/主控验证。</p>
+        </div>
+        <div class="card green">
+          <h3>扩产主线</h3>
+          <p class="muted">海外原厂扩HBM，NAND原厂恢复资本开支；国内看长鑫科技DRAM、长江存储3D NAND，以及北方华创/中微/拓荆/盛美等设备导入。</p>
+        </div>
+        <div class="card orange">
+          <h3>涨价主线</h3>
+          <p class="muted">优先级大致为HBM > 服务器DRAM/DDR5 > 企业级SSD/高容量NAND > PC/手机内存与存储 > 利基存储。</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        投研使用建议：如果看“产能瓶颈”，优先跟踪HBM产能、CoWoS/先进封装、存储测试机、刻蚀/沉积设备订单和原厂资本开支；如果看“涨价传导”，优先跟踪合约价、渠道价、模组厂库存成本、服务器客户长协和终端BOM承受力。
+      </div>
+    </section>
+
+    <section id="sources">
+      <div class="section-head">
+        <div>
+          <h2>来源与口径说明</h2>
+          <p>以下为本页使用的公开信息来源。市场规模和占比因统计口径不同会出现差异，本页在对应位置注明了“中商/华经/Gartner/WSTS/SEMI/Fortune BI”等口径。</p>
+        </div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="quote">
+          <h3>关键口径</h3>
+          <p>“中国市场规模”使用中商产业研究院整理的2023-2026E半导体存储器市场规模：3943、4267、4580、4888亿元。</p>
+          <p>“全球超级周期”使用Gartner 2026年4月预测：全球存储收入2025年2163亿美元、2026年6333亿美元、2027年7481亿美元。</p>
+          <p>“设备市场”使用SEMI 2025年12月预测：半导体设备2025-2027年分别为1330、1450、1560亿美元，并列出DRAM/NAND设备增长。</p>
+          <p>“产能约束评分”是基于公开供需、设备交期、扩产周期、良率爬坡和价格弹性的综合判断，分数用于横向比较，不代表精确量化模型。</p>
+        </div>
+        <div class="quote">
+          <h3>阅读提醒</h3>
+          <p>存储芯片行业有“位元需求”和“收入规模”两套常用语言。AI/HBM周期中，收入增长可能显著高于实际bit增长，因为ASP上行贡献很大。</p>
+          <p>下游应用结构中，“手机、服务器、PC”可以按DRAM、NAND分别统计；“嵌入式、内存条、SSD、HBM”是产品形态口径，不能直接与行业终端占比相加。</p>
+          <p>扩产信息中，长鑫科技采用招股书/证监会公开文件；长江存储尚未披露A股招股书，三期扩产信息来自公开报道，需以公司后续正式披露为准。</p>
+        </div>
+      </div>
+
+      <ul class="source-list" style="margin-top:16px;">
+        <li><a href="https://www.asml.com/en/technology/all-about-microchips/how-microchips-are-made">ASML：How microchips are made</a>，用于制造流程、光刻与洁净室背景。</li>
+        <li><a href="https://wap.seccw.com/document/detail/id/41990.html">中商产业研究院/深圳电子商会：2026年中国存储芯片产业链图谱及投资布局分析</a>，用于产业链、市场规模、产品结构和竞争格局。</li>
+        <li><a href="https://www.huaon.com/channel/trend/1153198.html">华经产业研究院：2026年中国存储芯片行业发展现状及趋势</a>，用于国内下游应用结构、产品结构和产业链描述。</li>
+        <li><a href="https://www.gartner.com/en/newsroom/press-releases/2026-04-08-gartner-forecasts-worldwide-semiconductor-revenue-to-exceed-us-dollars-one-point-3-trillion-in-2026">Gartner：Worldwide Semiconductor Revenue Forecast 2026</a>，用于全球存储超级周期收入预测。</li>
+        <li><a href="https://www.wsts.org/76/Recent-News-Release">WSTS Spring 2026 forecast</a>，用于2026全球半导体与存储器大幅上修背景。</li>
+        <li><a href="https://www.semi.org/en/semi-press-release/global-semiconductor-equipment-sales-projected-to-reach-a-record-of-156-billion-dollars-in-2027-semi-reports">SEMI：Global Semiconductor Equipment Sales Forecast 2025-2027</a>，用于半导体设备、WFE、DRAM/NAND设备数据。</li>
+        <li><a href="https://www.fortunebusinessinsights.com/semiconductor-memory-market-114132">Fortune Business Insights：Semiconductor Memory Market 2026-2034</a>，用于长期CAGR、区域和终端宽口径数据。</li>
+        <li><a href="https://www.trendforce.com/presscenter/news/20260331-12995.html">TrendForce：AI Server Demand to Drive Memory Contract Price Increases in 2Q26</a>，用于DRAM、NAND、eSSD、eMMC/UFS涨价和长期协议信息。</li>
+        <li><a href="https://www.idc.com/resource-center/blog/global-memory-shortage-crisis-market-analysis-and-the-potential-impact-on-the-smartphone-and-pc-markets-in-2026/">IDC：Global Memory Shortage Crisis</a>，用于AI数据中心挤占传统存储产能、手机/PC受价格冲击的判断。</li>
+        <li><a href="https://investors.micron.com/static-files/631b1a32-5537-46ae-8f40-82e42fc79dfe">Micron FYQ3 2026 prepared remarks</a>，用于全球DRAM/NAND供需紧张、长期客户协议、海外绿地晶圆厂和HBM封装扩产信息。</li>
+        <li><a href="https://www.csrc.gov.cn/csrc/c105906/c7638905/content.shtml">中国证监会：关于同意长鑫科技集团股份有限公司首次公开发行股票注册的批复</a>，用于长鑫科技IPO状态。</li>
+        <li><a href="https://static.sse.com.cn/stock/disclosure/announcement/c/202605/002170_20260517_MGLN.pdf">长鑫科技招股说明书（申报稿）</a>，用于DRAM产能地位、募集资金投向、技术升级和扩产相关信息。</li>
+        <li><a href="https://www.guancha.cn/economy/2026_04_20_814211.shtml">观察者网：长江存储加速扩产</a>，用于长江存储三期设备安装、阶段性产能目标等公开报道信息。</li>
+        <li><a href="https://www.21jingji.com/article/20260528/herald/10ae41d070428b64d87a81074dfc2885.html">21财经：存储“超级周期”进行时</a>，用于长鑫/长江扩产带动设备材料供应链的公开报道信息。</li>
+        <li><a href="https://pdf.dfcfw.com/pdf/H3_AP202512021792626819_1.pdf">国金证券：半导体设备行业报告</a>，用于3D NAND/3D DRAM工艺复杂度、刻蚀和薄膜沉积设备价值量判断。</li>
+        <li><a href="https://www.sse.com.cn/aboutus/mediacenter/ceremony/flashback/details/index.shtml?companyId=688449">上海证券交易所：联芸科技首次公开发行A股上市仪式</a>，用于联芸科技A股上市信息。</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
